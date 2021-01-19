@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="52.8319028%" y1="100%" x2="52.8319028%" y2="7.41058881%" id="linearGradient-1">
+            <stop stop-color="#707ED7" offset="0%"></stop>
+            <stop stop-color="#8894E4" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="13" cy="13" r="13"></circle>
+        <filter x="-3.8%" y="-3.8%" width="107.7%" height="107.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.854502052   0 0 0 0 0.87288074   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="52.8319028%" y1="100%" x2="52.8319028%" y2="7.41058881%" id="linearGradient-4">
+            <stop stop-color="#4A57B1" offset="0%"></stop>
+            <stop stop-color="#6F7BCD" offset="100%"></stop>
+        </linearGradient>
+        <path d="M9.31503806,13.3534067 C9.29620675,13.0292934 9.41060588,12.6988851 9.65823544,12.4512555 L14.6584625,7.45102841 C15.1187207,6.99077022 15.8649467,6.99077022 16.3252049,7.45102841 C16.7854631,7.91128661 16.7854631,8.65751258 16.3252049,9.11777078 L12.0935163,13.3494594 L16.3356158,17.639286 C16.7932465,18.1020654 16.7800653,18.839507 16.3061749,19.2864079 C15.8322844,19.7333088 15.0771373,19.7204367 14.6195066,19.2576573 L9.64782459,14.2300397 C9.40694567,13.9864507 9.29650791,13.666765 9.31503806,13.3534067 Z" id="path-5"></path>
+        <filter x="-40.8%" y="-24.0%" width="181.6%" height="148.0%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-5-商城详情" transform="translate(-30.000000, -190.000000)">
+            <g id="关闭-copy" transform="translate(30.000000, 190.000000)">
+                <g id="Group">
+                    <g id="Oval">
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <circle stroke="#4E58AC" stroke-width="1" stroke-linejoin="square" cx="13" cy="13" r="12.5"></circle>
+                    </g>
+                    <circle id="Oval" stroke="#5E69BC" fill="url(#linearGradient-4)" cx="13.5" cy="13.5" r="9"></circle>
+                    <circle id="Oval" fill="#3A479E" cx="15.9346629" cy="7.84157044" r="2.20720703"></circle>
+                    <circle id="Oval" fill="#3A479E" cx="15.9346629" cy="18.8776056" r="2.20720703"></circle>
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

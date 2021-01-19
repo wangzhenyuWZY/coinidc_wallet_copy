@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="170px" height="42px" viewBox="0 0 170 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="52.8319028%" y1="100%" x2="52.8319028%" y2="7.41058881%" id="linearGradient-1">
+            <stop stop-color="#DF570E" offset="0%"></stop>
+            <stop stop-color="#FF9850" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="170" height="42" rx="21"></rect>
+        <filter x="-0.6%" y="-2.4%" width="101.2%" height="104.8%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.880089962   0 0 0 0 0.881047124   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="52.8319028%" y1="100%" x2="52.8319028%" y2="8.84684526%" id="linearGradient-4">
+            <stop stop-color="#EF6E29" offset="0%"></stop>
+            <stop stop-color="#FAA86F" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-33.3%" y="-60.0%" width="166.7%" height="220.0%" filterUnits="objectBoundingBox" id="filter-5">
+            <feGaussianBlur stdDeviation="1" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-7-抽奖" transform="translate(-103.000000, -497.000000)">
+            <g id="Group-4" transform="translate(103.000000, 497.000000)">
+                <g id="Background">
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <rect stroke="#E15B12" stroke-width="1" stroke-linejoin="square" x="0.5" y="0.5" width="169" height="41" rx="20.5"></rect>
+                </g>
+                <rect id="Background" fill="url(#linearGradient-4)" x="5" y="5" width="160" height="32" rx="16"></rect>
+                <ellipse id="Oval" fill="#FFFFFF" opacity="0.5" filter="url(#filter-5)" transform="translate(15.388980, 10.238555) rotate(-21.000000) translate(-15.388980, -10.238555) " cx="15.3889802" cy="10.2385552" rx="4.5" ry="2.5"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

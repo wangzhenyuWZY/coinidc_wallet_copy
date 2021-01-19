@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="6" cy="6" r="6"></circle>
+        <filter x="-20.8%" y="-20.8%" width="141.7%" height="141.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.276296422 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-7-抽奖" transform="translate(-322.000000, -313.000000)">
+            <g id="Group-6" transform="translate(324.000000, 315.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#9F4A0F" stroke-width="1" fill="#FFCC01" fill-rule="evenodd" cx="6" cy="6" r="6.5"></circle>
+                </g>
+                <path d="M5,9.87398251 C3.27477279,9.42993972 2,7.86383943 2,6 C2,4.13616057 3.27477279,2.57006028 5,2.12601749 L5,9.87398251 Z M7,2.12601749 C8.72522721,2.57006028 10,4.13616057 10,6 C10,7.86383943 8.72522721,9.42993972 7,9.87398251 L7,2.12601749 Z" id="Combined-Shape" fill="#FFF7D8" transform="translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

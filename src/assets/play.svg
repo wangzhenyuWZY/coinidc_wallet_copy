@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>玩法@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="18" cy="18" r="18"></circle>
+        <filter x="-16.7%" y="-16.7%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="3" dy="6" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.0887024475   0 0 0 0 0.10208647   0 0 0 0 0.462186437  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <radialGradient cx="40.1236017%" cy="34.8312778%" fx="40.1236017%" fy="34.8312778%" r="66.3669379%" id="radialGradient-3">
+            <stop stop-color="#C9DFFF" offset="0%"></stop>
+            <stop stop-color="#6993E6" offset="63.0802926%"></stop>
+            <stop stop-color="#143F89" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="40.1236017%" cy="34.8312778%" fx="40.1236017%" fy="34.8312778%" r="67.6012557%" gradientTransform="translate(0.401236,0.348313),scale(1.000000,0.916691),rotate(-90.000000),translate(-0.401236,-0.348313)" id="radialGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="61.804552%"></stop>
+            <stop stop-color="#D0D0D0" offset="87.9493316%"></stop>
+            <stop stop-color="#3C3C3C" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-1-猫头鹰游戏" transform="translate(-319.000000, -151.000000)">
+            <g id="玩法" transform="translate(319.000000, 151.000000)">
+                <g id="Oval-Copy-6">
+                    <use fill="#524DDF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="2" stroke-linejoin="square" cx="18" cy="18" r="17"></circle>
+                </g>
+                <g id="Group-7" transform="translate(8.000000, 6.000000)">
+                    <circle id="Oval" fill="url(#radialGradient-3)" cx="10" cy="10" r="10"></circle>
+                    <path d="M5.8740546,0.971417884 C8.00688172,2.96561924 9.07329529,5.9622383 9.07329529,9.96127507 C9.07329529,16.1278456 7.58132874,18.1030185 4.82117193,18.1030185 C4.69772684,18.1030185 4.58387005,18.1085103 4.47960158,18.1194939 C3.51121438,17.4319998 2.67050662,16.5764399 2,15.5953361 C3.6016407,14.0024727 4.40246104,12.0784248 4.40246104,9.82319239 C4.40246104,7.63054981 3.64547445,5.73499659 2.13150127,4.13653272 C3.09358643,2.79565132 4.37915655,1.7025607 5.8740546,0.971417884 Z M11.1645337,6.42911419e-12 C16.2644702,0.456226863 20.2619731,4.74118999 20.2619731,9.95981995 C20.2619731,15.1860923 16.2527533,19.4759612 11.1421209,19.9216196 C13.637701,17.9413308 14.885491,14.8103156 14.885491,10.5285741 C14.885491,4.14762606 12.9799093,1.0546874 11.1645337,3.25335592e-12 Z" id="Combined-Shape" fill="url(#radialGradient-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

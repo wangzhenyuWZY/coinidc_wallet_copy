@@ -1,0 +1,576 @@
+@keyframes hammer {
+    0% {
+        // top: 32%;
+        transform: translateY(0%) skewY(0deg);
+    }
+    50% {
+        // top: 22%;
+        transform: translateY(-15%) skewY(24deg);
+    }
+    100% {
+        // top: 32%;
+        transform: translateY(0%) skewY(0deg);
+    }
+}
+
+@keyframes handHammer {
+    0% {
+        // top: 32%;
+        transform: translateY(0);
+    }
+    50% {
+        // top: 13%;
+        transform: translateY(-150%);
+    }
+    100% {
+        // top: 32%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bambooHammer {
+    0% {
+        // top: -2%;
+        transform: translateY(-2%);
+    }
+    50% {
+        // top: -19%;
+        transform: translateY(-19%);
+    }
+    100% {
+        // top: -2%;
+        transform: translateY(-2%);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+        // width: 10%;
+        // height: 4.44%;
+        // border: 4px solid #415138;
+    }
+    100% {
+        visibility: hidden;
+        transform: translate(-50%, -50%) scale(8);
+        // width: 65%;
+        // height: 40%;
+        // border: 1px solid #415138;
+    }
+}
+
+@keyframes breath {
+    0% {
+        transform: translateY(0%) scaleY(1);
+    }
+    15% {
+        transform: translateY(1%) scaleY(0.97);
+    }
+    25% {
+        transform: translateY(0%) scaleY(1);
+    }
+    35% {
+        transform: translateY(1%) scaleY(0.97);
+    }
+    50% {
+        transform: translateY(0%) scaleY(1);
+    }
+    65% {
+        transform: translateX(-0.2%) scaleX(1.06);
+    }
+    75% {
+        transform: translateY(0%) scaleY(1);
+    }
+    85% {
+        transform: translateX(-0.2%) scaleX(1.06);
+    }
+    100% {
+        transform: translateY(0%) scaleY(1);
+    }
+}
+
+@keyframes hatBreath {
+    0% {
+        transform: translateY(0%) scaleY(1);
+    }
+    15% {
+        transform: translateY(12%);
+    }
+    25% {
+        transform: translateY(0%) scaleY(1);
+    }
+    35% {
+        transform: translateY(12%);
+    }
+    50% {
+        transform: translateY(0%) scaleY(1);
+    }
+    100% {
+        transform: translateY(0%) scaleY(1);
+    }
+}
+
+@keyframes clothesBreath {
+    0% {
+        transform: translateY(0%) scaleY(1);
+    }
+    50% {
+        transform: translateY(0%) scaleY(1);
+    }
+    65% {
+        transform: translateX(-0.2%) scaleX(1.06);
+    }
+    75% {
+        transform: translateY(0%) scaleY(1);
+    }
+    85% {
+        transform: translateX(-0.2%) scaleX(1.06);
+    }
+    100% {
+        transform: translateY(0%) scaleY(1);
+    }
+}
+
+@keyframes shining {
+    0% {
+        transform: translateX(0%);
+    }
+    10% {
+        transform: translateX(5%);
+    }
+    15% {
+        transform: translateX(-5%);
+    }
+    20% {
+        transform: translateX(5%);
+    }
+    25% {
+        transform: translateX(-5%);
+    }
+    30% {
+        transform: translateX(5%);
+    }
+    35% {
+        transform: translateX(-5%);
+    }
+    40% {
+        transform: translateX(5%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    75% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.owl {
+    position: absolute;
+    // left: 50%;
+    // top: 12.5rem;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    /*width: 18rem;*/
+    /*height: 18rem;*/
+    // background: rgba(255, 255, 255, .1);
+    // transform: translateX(-50%);
+    /*box-shadow: 0 0 5px 5px rgba(100, 100, 100, .3);*/
+}
+
+.owl .ripple {
+    visibility: hidden;
+    position: absolute;
+    top: 96%;
+    left: 3%;
+    width: 10%;
+    height: 5%;
+    border: 1px solid #415138;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.owl.fighting .ripple {
+    /*visibility: visible;*/
+    animation: ripple .3s cubic-bezier(.4, 0.3, .92, .4) 1 .3s;
+}
+
+.owl .body {
+    z-index: 10;
+}
+
+.owl .body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.owl .body .wings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.owl.fly .body .wings.folded {
+    visibility: hidden;
+}
+
+.owl .body .wings.folded .left {
+    position: absolute;
+    top: 34.8%;
+    left: 13%;
+    width: 50%;
+    height: 51%;
+}
+
+.owl .body .wings.spread {
+    visibility: hidden;
+}
+
+.owl.fly .body .wings.spread {
+    visibility: visible;
+}
+
+.owl .body .wings.spread .left {
+    position: absolute;
+    top: 31.8%;
+    left: -25%;
+    width: 50%;
+    height: 56%;
+}
+
+.owl img {
+    height: 100%;
+}
+
+.owl .body .wings.folded .right {
+    position: absolute;
+    top: 34.8%;
+    right: 3.5%;
+    width: 50%;
+    height: 51%;
+}
+
+.owl .body .wings.spread .right {
+    position: absolute;
+    top: 31.8%;
+    right: 5.5%;
+    width: 50%;
+    height: 56%;
+}
+
+.owl .body .arms {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.owl.fighting .body .arms {
+    visibility: visible;
+}
+
+.owl .body .arms .left {
+    position: absolute;
+    top: 32%;
+    left: 0%;
+    height: 58%;
+    transform: translateY(0%) skewY(0deg);
+}
+
+.owl.fighting .body .arms .left {
+    animation: hammer .3s cubic-bezier(.6, 0.2, .92, .4) 1;
+}
+
+.owl .body .hand {
+    visibility: hidden;
+    z-index: 20;
+    position: absolute;
+    top: 32%;
+    left: -2.5%;
+    height: 13%;
+}
+
+.owl.fighting .body .hand {
+    animation: handHammer .3s cubic-bezier(.6, 0.2, .92, .4) 1;
+}
+
+.owl.fighting .body .hand {
+    visibility: visible;
+}
+
+.owl .body .tail {
+    position: absolute;
+    top: 79.3%;
+    left: 33%;
+    width: 30%;
+    height: 11.6%;
+}
+
+.owl .body .abdomen {
+    position: absolute;
+    left: 21.5%;
+    top: 11.5%;
+    height: 77%;
+}
+
+.owl .body .abdomen {
+    position: absolute;
+    left: 21.5%;
+    top: 11.5%;
+    height: 77%;
+    animation: breath 3s linear infinite;
+}
+
+.owl .body .clothes {
+    position: absolute;
+    left: 21.1%;
+    top: 38.5%;
+    height: 50%;
+}
+
+.owl.regular .body .clothes {
+    animation: clothesBreath 3s linear infinite;
+}
+
+.owl .body .hat {
+    position: absolute;
+    left: 35.1%;
+    top: 5%;
+    height: 13%;
+}
+
+.owl.regular .body .hat {
+    animation: hatBreath 3s linear infinite;
+}
+
+// .owl .body .branch {
+//     position: absolute;
+//     top: 80%;
+//     left: 17%;
+//     height: 8%;
+// }
+
+// .owl .body .feet {
+//     position: absolute;
+//     top: 79%;
+//     width: 100%;
+//     height: 6%;
+// }
+
+// .owl .body .feet .left {
+//     position: absolute;
+//     left: 31%;
+//     height: 100%;
+// }
+
+// .owl .body .feet .right {
+//     position: absolute;
+//     right: 38%;
+//     height: 100%;
+// }
+
+.owl .body .head {
+    position: absolute;
+    top: 11%;
+    left: 22%;
+    width: 49%;
+    height: 35%;
+}
+
+.owl .body .head .ear {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    width: 100%;
+    height: 50%;
+}
+
+.owl .body .head .ear .left {
+    position: absolute;
+    left: 4%;
+    top: 1.8%;
+    height: 100%;
+}
+
+.owl .body .head .ear .right {
+    position: absolute;
+    right: 3%;
+    top: 1.8%;
+    height: 100%;
+}
+
+.owl .body .head .eye {
+    position: absolute;
+    top: 12%;
+    left: 0;
+    height: 68%;
+    width: 100%;
+}
+
+.owl .body .head .eye .circle.left {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 50%;
+    height: 100%;
+}
+
+.owl .body .head .eye .circle.left .contour {
+    position: absolute;
+    left: 18%;
+    top: 12%;
+    height: 89%;
+}
+
+// .owl .body .head .eye .circle.left .eyebrow {
+//     position: absolute;
+//     left: 18%;
+//     top: 1%;
+//     height: 40%;
+// }
+
+// .owl .body .head .eye .circle.right .eyebrow {
+//     position: absolute;
+//     right: 15%;
+//     top: 1%;
+//     height: 40%;
+// }
+
+.owl .body .head .eye .circle.right {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    width: 50%;
+    height: 100%;
+}
+
+.owl .body .head .eye .circle.right .contour {
+    position: absolute;
+    right: 16%;
+    top: 12%;
+    height: 89%;
+}
+
+.owl .body .head .eye .circle.left .eyeball {
+    position: absolute;
+    top: 32%;
+    left: 31%;
+    width: 55%;
+    height: 55%;
+    background: transparent url(../images/common/eyeball.png) no-repeat center center / 100% 100%;
+}
+
+.owl .body .head .eye .circle.left .eyeball .pupil {
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    width: 40%;
+    height: 40%;
+    background: #000;
+    border-radius: 50%;
+}
+
+.owl.regular .body .head .eye .circle.left .eyeball .pupil {
+    animation: shining 3s linear infinite;
+}
+
+.owl .body .head .eye .circle.left .eyeball .star-1 {
+    position: absolute;
+    top: 35%;
+    left: 65%;
+    width: 15%;
+    height: 15%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.owl .body .head .eye .circle.left .eyeball .star-2 {
+    position: absolute;
+    top: 61%;
+    left: 34%;
+    width: 10%;
+    height: 10%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.owl .body .head .eye .circle.right .eyeball {
+    position: absolute;
+    top: 32%;
+    right: 26%;
+    width: 55%;
+    height: 55%;
+    background: transparent url(../images/common/eyeball.png) no-repeat center center / 100% 100%;
+}
+
+.owl .body .head .eye .circle.right .eyeball .pupil {
+    position: absolute;
+    right: 30%;
+    top: 30%;
+    width: 40%;
+    height: 40%;
+    background: #000;
+    border-radius: 50%;
+}
+
+.owl.regular .body .head .eye .circle.right .eyeball .pupil {
+    animation: shining 3s linear infinite;
+}
+
+.owl .body .head .eye .circle.right .eyeball .star-1 {
+    position: absolute;
+    top: 35%;
+    left: 65%;
+    width: 15%;
+    height: 15%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.owl .body .head .eye .circle.right .eyeball .star-2 {
+    position: absolute;
+    top: 61%;
+    left: 34%;
+    width: 10%;
+    height: 10%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.owl .body .head .mouth {
+    position: absolute;
+    top: 50%;
+    left: 44%;
+    height: 29%;
+}
+
+.owl .body .bamboo {
+    visibility: hidden;
+    position: absolute;
+    // top: -200%;
+    left: 0%;
+    height: 98%;
+    transition: all .3s cubic-bezier(.6, 0.2, .92, .4) 0s;
+}
+
+.owl.fly .body .bamboo {
+    visibility: visible;
+    position: absolute;
+    // top: -2%;
+    transform: translateY(-2%);
+    left: 0%;
+    height: 98%;
+}
+
+.owl.fighting .body .bamboo {
+    visibility: visible;
+    transform: translateY(-2%);
+    animation: bambooHammer .3s cubic-bezier(.6, 0.2, .92, .4) 1;
+}

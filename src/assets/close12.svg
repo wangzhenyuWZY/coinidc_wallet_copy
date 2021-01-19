@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="52.8319028%" y1="100%" x2="52.8319028%" y2="7.41058881%" id="linearGradient-1">
+            <stop stop-color="#707ED7" offset="0%"></stop>
+            <stop stop-color="#8894E4" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="13" cy="13" r="13"></circle>
+        <filter x="-3.8%" y="-3.8%" width="107.7%" height="107.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.854502052   0 0 0 0 0.87288074   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="52.8319028%" y1="100%" x2="52.8319028%" y2="7.41058881%" id="linearGradient-4">
+            <stop stop-color="#4A57B1" offset="0%"></stop>
+            <stop stop-color="#6F7BCD" offset="100%"></stop>
+        </linearGradient>
+        <path d="M13.3513514,4.91891892 L13.3513514,4.91891892 C14.5156273,4.91891892 15.4594595,5.86275107 15.4594595,7.02702703 L15.4594595,19.6756757 C15.4594595,20.8399516 14.5156273,21.7837838 13.3513514,21.7837838 L13.3513514,21.7837838 C12.1870754,21.7837838 11.2432432,20.8399516 11.2432432,19.6756757 L11.2432432,7.02702703 C11.2432432,5.86275107 12.1870754,4.91891892 13.3513514,4.91891892 Z" id="path-5"></path>
+        <filter x="-71.2%" y="-17.8%" width="242.3%" height="135.6%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M13.3513514,4.91891892 L13.3513514,4.91891892 C14.5156273,4.91891892 15.4594595,5.86275107 15.4594595,7.02702703 L15.4594595,19.6756757 C15.4594595,20.8399516 14.5156273,21.7837838 13.3513514,21.7837838 L13.3513514,21.7837838 C12.1870754,21.7837838 11.2432432,20.8399516 11.2432432,19.6756757 L11.2432432,7.02702703 C11.2432432,5.86275107 12.1870754,4.91891892 13.3513514,4.91891892 Z" id="path-7"></path>
+        <filter x="-71.2%" y="-17.8%" width="242.3%" height="135.6%" filterUnits="objectBoundingBox" id="filter-8">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-5-商城详情" transform="translate(-319.000000, -190.000000)">
+            <g id="关闭-copy-2" transform="translate(319.000000, 190.000000)">
+                <g id="Group">
+                    <g id="Oval">
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <circle stroke="#4E58AC" stroke-width="1" stroke-linejoin="square" cx="13" cy="13" r="12.5"></circle>
+                    </g>
+                    <circle id="Oval" stroke="#5E69BC" fill="url(#linearGradient-4)" cx="13.5" cy="12.5" r="9"></circle>
+                    <circle id="Oval" fill="#3A479E" cx="8.5" cy="8.5" r="2.5"></circle>
+                    <circle id="Oval" fill="#3A479E" cx="18.5" cy="8.5" r="2.5"></circle>
+                    <circle id="Oval" fill="#3A479E" cx="8.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval" fill="#3A479E" cx="18.5" cy="18.5" r="2.5"></circle>
+                    <g id="Rectangle" transform="translate(13.351351, 13.351351) rotate(136.000000) translate(-13.351351, -13.351351) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    </g>
+                    <g id="Rectangle" transform="translate(13.351351, 13.351351) rotate(45.000000) translate(-13.351351, -13.351351) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

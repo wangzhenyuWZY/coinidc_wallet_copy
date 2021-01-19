@@ -1,0 +1,298 @@
+@keyframes hatBreath {
+  0% {
+    transform: translateY(0%) scaleY(1);
+  }
+
+  15% {
+    transform: translateY(2%);
+  }
+
+  25% {
+    transform: translateY(0%) scaleY(1);
+  }
+
+  35% {
+    transform: translateY(2%);
+  }
+
+  50% {
+    transform: translateY(0%) scaleY(1);
+  }
+
+  100% {
+    transform: translateY(0%) scaleY(1);
+  }
+}
+
+@keyframes hammer {
+  0% {
+    // top: 32%;
+    transform: translateY(0%) skewY(0deg);
+  }
+
+  20% {
+    // top: 22%;
+    transform: translateY(-15%) skewY(24deg);
+  }
+
+  40% {
+    // top: 32%;
+    transform: translateY(0%) skewY(0deg);
+  }
+
+  60% {
+    // top: 22%;
+    transform: translateY(-15%) skewY(24deg);
+  }
+
+  100% {
+    // top: 22%;
+    transform: translateY(-15%) skewY(24deg);
+  }
+}
+
+@keyframes handHammer {
+  0% {
+    transform: translateY(0%);
+  }
+
+  20% {
+    transform: translateY(-100%);
+  }
+
+  40% {
+    transform: translateY(0%);
+  }
+
+  60% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes bambooHammer {
+  0% {
+    // top: -38%;
+    transform: translateY(0);
+  }
+
+  20% {
+    // top: -55%;
+    transform: translateY(-17%);
+  }
+
+  40% {
+    // top: -38%;
+    transform: translateY(0%);
+  }
+
+  60% {
+    // top: -55%;
+    transform: translateY(-17%);
+  }
+
+  100% {
+    // top: -55%;
+    visibility: hidden;
+    transform: translateY(-17%);
+  }
+}
+
+@keyframes lightning {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes halo {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .2;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.owl.commander {
+  .halo {
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    top: -142%;
+    left: -26%;
+    width: 142%;
+    height: 117%;
+    background: radial-gradient(rgba(255,213,92,.5), transparent 71%);
+  }
+  .lightning {
+    pointer-events: none;
+    position: absolute;
+    top: -122%;
+    left: -10%;
+    width: 107%;
+    height: 65%;
+    // background: transparent url('../images/skin/lighting.png') center center / contain;
+    // box-shadow: 0 0 5px 5px rgba(0, 0, 0, .9);
+
+    .light-1 {
+      visibility: hidden;
+      position: absolute;
+      top: 6%;
+      left: 9%;
+      width: 91%;
+      height: 100%;
+      background: transparent url('../images/skin/lighting-1.png') no-repeat center center / contain;
+    }
+
+    .light-2 {
+      visibility: hidden;
+      position: absolute;
+      top: -2%;
+      left: 26%;
+      width: 55%;
+      height: 80%;
+      background: transparent url('../images/skin/lighting-2.png') no-repeat center center / contain;
+    }
+
+    .light-3 {
+      visibility: hidden;
+      position: absolute;
+      left: 2.5%;
+      top: 27%;
+      width: 31%;
+      height: 38%;
+      background: transparent url('../images/skin/lighting-3.png') no-repeat center center / contain;
+    }
+
+    .light-4 {
+      visibility: hidden;
+      position: absolute;
+      left: 17%;
+      top: -5.5%;
+      width: 18%;
+      height: 57%;
+      background: transparent url('../images/skin/lighting-4.png') no-repeat center center / contain;
+    }
+  }
+
+  .body {
+    .arms {
+      .left {
+        left: -7%;
+      }
+    }
+
+    .hand {
+      left: -9.5%;
+    }
+
+    .hat {
+      position: absolute;
+      left: 14.5%;
+      top: -30%;
+      height: 65%;
+    }
+
+    .clothes {
+      position: absolute;
+      left: 21.1%;
+      top: 41.5%;
+      height: 39.5%;
+    }
+
+    .bamboo {
+      top: -38%;
+      left: -11%;
+      transform: translateY(0);
+    }
+
+    .health {
+        top: -43%;
+    }
+  }
+
+}
+
+.owl.fly {
+  .body {
+    .wings.folded {
+      visibility: hidden;
+    }
+  }
+}
+
+.owl.fighting {
+  &.lighting {
+    .halo {
+      pointer-events: none;
+      animation: halo .4s linear 0s;
+    }
+    .lightning {
+      pointer-events: none;
+      animation: lightning .2s linear .2s;
+      .light-1 {
+        visibility: visible;
+        transition: all 0s linear .1s;
+      }
+  
+      .light-2 {
+        visibility: visible;
+        transition: all 0s linear .1s;
+      }
+  
+      .light-3 {
+        visibility: visible;
+        transition: all 0s linear .2s;
+      }
+  
+      .light-4 {
+        visibility: visible;
+        transition: all 0s linear .2s;
+      }
+    }
+  }
+
+  .body {
+
+    .arms {
+      .left {
+        animation: hammer 1s cubic-bezier(.6, 0.2, .92, .4) 1;
+      }
+    }
+
+    .hand {
+      animation: handHammer 1s cubic-bezier(.6, 0.2, .92, .4) 1;
+    }
+
+    .bamboo {
+      // transform: translateY(0);
+    }
+
+    .bamboo {
+      animation: bambooHammer 1s cubic-bezier(.6, 0.2, .92, .4) 1;
+    }
+
+  }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>收益@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="18" cy="18" r="18"></circle>
+        <filter x="-16.7%" y="-16.7%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="3" dy="6" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.436171344   0 0 0 0 0.275511609   0 0 0 0 0.0390409838  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <radialGradient cx="10.2113975%" cy="0%" fx="10.2113975%" fy="0%" r="124.084582%" gradientTransform="translate(0.102114,0.000000),scale(0.700000,1.000000),rotate(62.736616),translate(-0.102114,-0.000000)" id="radialGradient-3">
+            <stop stop-color="#FFAA6E" offset="0%"></stop>
+            <stop stop-color="#D50707" offset="71.6266257%"></stop>
+            <stop stop-color="#8B0000" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="10.2113975%" cy="0%" fx="10.2113975%" fy="0%" r="152.85142%" gradientTransform="translate(0.102114,0.000000),scale(0.583333,1.000000),rotate(71.498342),translate(-0.102114,-0.000000)" id="radialGradient-4">
+            <stop stop-color="#FFAA6E" offset="0%"></stop>
+            <stop stop-color="#D50707" offset="58.4798213%"></stop>
+            <stop stop-color="#620000" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="22.4068339%" y1="26.2622468%" x2="86.2948171%" y2="71.7184331%" id="linearGradient-5">
+            <stop stop-color="#FFF0B8" offset="0%"></stop>
+            <stop stop-color="#FFD231" offset="28.7843208%"></stop>
+            <stop stop-color="#FF7F16" offset="88.9834718%"></stop>
+            <stop stop-color="#FF943B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-1-猫头鹰游戏" transform="translate(-319.000000, -327.000000)">
+            <g id="收益" transform="translate(319.000000, 327.000000)">
+                <g id="Oval-Copy-5">
+                    <use fill="#FFA646" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="2" stroke-linejoin="square" cx="18" cy="18" r="17"></circle>
+                </g>
+                <path d="M26.5052246,16.6521468 C24.6786311,13.0552809 22.2241221,13 22.2241221,13 C22.2241221,13 20.3974003,14.1067376 18.0000446,14.1067376 C15.6025604,14.1067376 13.8329918,13 13.8329918,13 C13.8329918,13 11.321458,13 9.49473614,16.7074277 C7.83947414,20.0276404 8.52441457,22.2411156 8.52441457,22.2411156 C8.52441457,22.2411156 4.64287143,27 18.0000446,27 C31.3572177,27 27.4755461,22.1857102 27.4755461,22.1857102 C27.4755461,22.1857102 28.2177683,20.0830458 26.5052246,16.6521468 Z" id="Path" fill="url(#radialGradient-3)"></path>
+                <path d="M17.9715129,13 C21.7930029,13 22.5910362,10.2 22.5910362,10.2 C22.5910362,10.2 24.8152084,8.0999325 23.6745711,7.19988429 C22.5340621,6.29997107 20.8231703,7.49999036 20.8231703,7.49999036 C20.8231703,7.49999036 19.511354,6 17.9715129,6 C16.4316718,6 15.176958,7.49999036 15.176958,7.49999036 C15.176958,7.49999036 13.4660662,6.29997107 12.3254289,7.19988429 C11.1847916,8.0999325 13.4089638,10.2 13.4089638,10.2 C13.4089638,10.2 14.150023,13 17.9715129,13 Z" id="Path" fill="url(#radialGradient-4)"></path>
+                <path d="M18,25 C15.235428,25 13,22.7382244 13,20.000067 C13,17.2619095 15.235428,15 18,15 C20.7647043,15 23,17.2619095 23,20.000067 C23,22.7382244 20.7647043,25 18,25 Z M15.9442981,20.2578464 L18.1981018,22.5395263 L20.4519976,20.2578464 L18.1981018,17.9761666 L15.9442981,20.2578464 Z" id="Combined-Shape" fill="url(#linearGradient-5)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

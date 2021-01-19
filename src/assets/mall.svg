@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>商城@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="18" cy="18" r="18"></circle>
+        <filter x="-16.7%" y="-16.7%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="3" dy="6" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="100%" y1="87.0080135%" x2="-9.03899859%" y2="7.86177451%" id="linearGradient-3">
+            <stop stop-color="#EABA47" offset="0%"></stop>
+            <stop stop-color="#F6880D" offset="17.8581105%"></stop>
+            <stop stop-color="#FCB930" offset="38.1444273%"></stop>
+            <stop stop-color="#F6830A" offset="65.3359827%"></stop>
+            <stop stop-color="#FDC73A" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="0%" cy="64.5802046%" fx="0%" fy="64.5802046%" r="766.429077%" gradientTransform="translate(0.000000,0.645802),scale(0.130475,1.000000),translate(-0.000000,-0.645802)" id="radialGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFAEE" offset="17.8581105%"></stop>
+            <stop stop-color="#E9E4D4" offset="38.1444273%"></stop>
+            <stop stop-color="#B3B3B3" offset="65.3359827%"></stop>
+            <stop stop-color="#D2D0CC" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="50%" cy="-15.9800921%" fx="50%" fy="-15.9800921%" r="181.569283%" gradientTransform="translate(0.500000,-0.159801),scale(0.535451,1.000000),rotate(12.992927),translate(-0.500000,0.159801)" id="radialGradient-5">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFAEE" offset="17.8581105%"></stop>
+            <stop stop-color="#E9E4D4" offset="38.1444273%"></stop>
+            <stop stop-color="#B3B3B3" offset="65.3359827%"></stop>
+            <stop stop-color="#D2D0CC" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-1-猫头鹰游戏" transform="translate(-319.000000, -271.000000)">
+            <g id="商城" transform="translate(319.000000, 271.000000)">
+                <g id="Oval-Copy-4">
+                    <use fill="#E34B4B" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="2" stroke-linejoin="square" cx="18" cy="18" r="17"></circle>
+                </g>
+                <path d="M25.9990252,12 L9.50004548,12 L8,15.3864646 C8,16.7309141 9.09139143,17.8209128 10.4376689,17.8209128 C11.7840415,17.8209128 12.8745776,16.7316388 12.8745776,15.3864646 C12.8745776,16.7309141 13.965874,17.8209128 15.3122465,17.8209128 C16.6586191,17.8209128 17.7491552,16.7316388 17.7491552,15.3864646 C17.7491552,16.7309141 18.8404516,17.8209128 20.1868241,17.8209128 C21.5331967,17.8209128 22.6236378,16.7316388 22.6236378,15.3864646 C22.6236378,16.7309141 23.7150292,17.8209128 25.0614017,17.8209128 C26.4076793,17.8209128 27.4989756,16.7316388 27.4989756,15.3864646 L25.9990252,12 Z" id="Path" fill="url(#linearGradient-3)"></path>
+                <path d="M10.9135908,10.9872073 L24.3162686,10.9872073 C24.8212671,10.9872073 25.2305349,10.5424637 25.2305349,9.99366488 C25.2305349,9.44474369 24.8203985,9 24.3162686,9 L10.9135908,9 C10.4093644,9 10,9.44474369 10,9.99366488 C10,10.5424637 10.4093644,10.9872073 10.9135908,10.9872073 Z" id="Path" fill="url(#radialGradient-4)"></path>
+                <path d="M17.6145662,18.0009292 C16.2463201,19.4595701 14.0332333,19.4595701 12.6649872,18.0009292 C11.9608408,18.7511051 10.9922897,19.1463258 10,19.0883022 L10,24.4788518 C10,25.4983931 10.8202336,26.1548228 11.5231255,26.1548228 L23.7059104,26.1548228 C24.622642,26.1548228 25.2298079,25.3943225 25.2298079,24.4788518 L25.2298079,19.0874763 C24.2376147,19.1453966 23.2690636,18.7501759 22.5649172,18 C21.1958991,19.4595701 18.9827158,19.4595701 17.6145662,18.0009292 Z" id="Path" fill="url(#radialGradient-5)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>公告@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="18" cy="18" r="18"></circle>
+        <filter x="-16.7%" y="-16.7%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="3" dy="6" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="13.3828577%" x2="50%" y2="98.8213512%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#C8C8C8" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="6.93622383%" x2="71.6893799%" y2="93.2867597%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFAEE" offset="17.8581105%"></stop>
+            <stop stop-color="#E9E4D4" offset="38.1444273%"></stop>
+            <stop stop-color="#B3B3B3" offset="65.3359827%"></stop>
+            <stop stop-color="#D2D0CC" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="73.0769231%" gradientTransform="translate(0.500000,0.500000),scale(1.000000,0.684211),rotate(-90.000000),scale(1.000000,0.761716),translate(-0.500000,-0.500000)" id="radialGradient-5">
+            <stop stop-color="#FDFDFD" offset="0%"></stop>
+            <stop stop-color="#E3E3E3" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="67.4977281%" gradientTransform="translate(0.500000,0.500000),scale(1.000000,0.636364),rotate(90.000000),scale(1.000000,0.676290),translate(-0.500000,-0.500000)" id="radialGradient-6">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#B1B1B1" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="-1.11022302e-14%" y1="50%" x2="97.525289%" y2="50%" id="linearGradient-7">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#828282" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-1-猫头鹰游戏" transform="translate(-319.000000, -210.000000)">
+            <g id="公告" transform="translate(319.000000, 210.000000)">
+                <g id="Oval-Copy-3">
+                    <use fill="#22ABFE" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="2" stroke-linejoin="square" cx="18" cy="18" r="17"></circle>
+                </g>
+                <g id="Group-14" transform="translate(9.000000, 6.000000)">
+                    <path d="M19.4868421,14.1942446 L16.2631579,15 L16,7 L19.2894737,8.55395683 C19.2894737,8.55395683 21,9.41726619 21,11.4892086 C21,13.6883453 19.4868421,14.1942446 19.4868421,14.1942446" id="Fill-3" fill="url(#linearGradient-3)"></path>
+                    <path d="M15.244747,5.4979756 C16.4538969,6.78240324 17.1208231,8.10271343 16.9818545,11.146981 C16.8121738,14.8642964 16.9082949,15.0084592 16.6237224,15.0084592 L6,19 L8.74769658,1 L15.244747,5.4979756 Z" id="Fill-5" fill="url(#linearGradient-4)"></path>
+                    <path d="M7.4810203,0.0172540999 C11.0292521,0.33051423 13.4664499,4.83005637 12.9246196,10.0672093 C12.3827893,15.3044307 9.06719439,19.2960131 5.51896257,18.9827529 C1.97073076,18.6694243 -0.466392859,14.1698821 0.0753632605,8.93272924 C0.617193562,3.69557634 3.93278849,-0.296074562 7.4810203,0.0172540999" id="Fill-7" fill="url(#radialGradient-5)"></path>
+                    <path d="M7.02824501,4.00998243 C8.93882551,4.19138979 10.2511651,6.7963907 9.95941071,9.82840115 C9.6676563,12.8604116 7.88233549,15.1713517 5.97175499,14.9900179 C4.06117449,14.8086105 2.74883488,12.2036096 3.04058929,9.17159914 C3.3323437,6.13951515 5.11766451,3.8286486 7.02824501,4.00998243" id="Fill-10" fill="url(#radialGradient-6)"></path>
+                    <path d="M14.999244,20.7242347 C14.999244,20.7242347 15.0992122,22 12.9999604,22 C10.9007879,22 11.000756,20.7242347 11.000756,20.7242347 L11.000756,16.7268279 C11.000756,16.7268279 11.025272,15.5299752 12.7000559,15.1108405 C14.3994351,14.6855629 14.999244,15.6211736 14.999244,15.6211736 L14.999244,20.7242347 Z" id="Fill-12" fill="url(#linearGradient-7)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
