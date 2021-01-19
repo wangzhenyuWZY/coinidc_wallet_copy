@@ -79,6 +79,10 @@
         <div class="btns btnst" @click="doTransfer">{{$t('mall20')}}</div>
       </div>
     </alert2>
+    <van-overlay :show="isTransing">
+      <van-loading class="transingIco" />
+    </van-overlay>
+    
   </div>
 </template>
 
@@ -90,6 +94,7 @@ import Title from '@/components/Title'
 import { Notify } from 'vant';
 import {queryWalletList} from '@/api/user'
 import { getStore, objIsNull } from "@/config/utils";
+import { Loading,Overlay } from 'vant'
 export default {
   data() {
     return {
@@ -103,12 +108,15 @@ export default {
       toAccount:'',
       coinList:[],
       transNum:0,
-      password:''
+      password:'',
+      isTransing:false
     }
   },
   components: {
     Title,
-    alert2
+    alert2,
+    vanLoading:Loading,
+    vanOverlay:Overlay
   },
   created(){
     if(!window.tronWeb){
@@ -179,6 +187,7 @@ export default {
         Notify({ type: 'warning', message: this.$t('mall28')  });
         return
       }
+      this.isTransing = true
       let transNum = new bigNumber(this.transNum)
         transNum = transNum.times(Math.pow(10,6))
       if(this.transferCoin.coinCode=='TRX'){
@@ -190,6 +199,7 @@ export default {
                 that.password = ''
                 that.transNum = ''
                 that.toAccount = ''
+                that.isTransing = false
                 Notify({ type: 'success', message: that.$t('mall29') });
                 that.$router.push('/walletAssets/wallet')
               })
@@ -208,6 +218,7 @@ export default {
             window.tronWeb.trx
               .sendRawTransaction(signedTransaction)
               .then(function(res) {
+                that.isTransing = false
                 Notify({ type: 'success', message: that.$t('mall29') });
                 that.$router.push('/walletAssets/wallet')
               })
@@ -242,6 +253,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.transingIco{
+  position:absolute;
+  top:45%;
+  left:48%;
+}
 .btns {
   padding: 0 15px;
   margin-top: 20px;

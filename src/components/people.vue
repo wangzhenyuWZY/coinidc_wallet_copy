@@ -1,73 +1,73 @@
 <template>
   <div class="owl regular" ref="owl" :class="[fly, fighting]" @touchstart="touchstart">
     <!-- <div class="shining" v-if="showShining">
-      <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/shining.jpg" alt="">
+      <img src="../themes/images/common/shining.jpg" alt="">
     </div> -->
     <div class="body">
       <div class="wings folded">
         <div class="left">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/folded-wing-left.png" alt="">
+          <img src="../themes/images/common/folded-wing-left.png" alt="">
         </div>
         <div class="right">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/folded-wing-right.png" alt="">
+          <img src="../themes/images/common/folded-wing-right.png" alt="">
         </div>
       </div>
       <div class="wings spread">
         <div class="left">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/wing-left.png" alt="">
+          <img src="../themes/images/common/wing-left.png" alt="">
         </div>
         <div class="right">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/wing-right.png" alt="">
+          <img src="../themes/images/common/wing-right.png" alt="">
         </div>
       </div>
       <div class="arms">
         <div class="left">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/hold-wing.png" alt="">
+          <img src="../themes/images/common/hold-wing.png" alt="">
         </div>
       </div>
       <div class="hand">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/hand.png" alt="">
+        <img src="../themes/images/common/hand.png" alt="">
       </div>
       <div class="tail">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/tail.png" alt="">
+        <img src="../themes/images/common/tail.png" alt="">
       </div>
       <div class="abdomen">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/body.png" alt="">
+        <img src="../themes/images/common/body.png" alt="">
       </div>
       <div class="clothes">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/clothes.png" alt="">
+        <img src="../themes/images/common/clothes.png" alt="">
       </div>
       <div class="hat">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/hat.png" alt="">
+        <img src="../themes/images/common/hat.png" alt="">
       </div>
       <div class="branch" v-if="defaultBranch">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/branch.png" alt="">
+        <img src="../themes/images/common/branch.png" alt="">
       </div>
       <slot></slot>
       <div class="feet">
         <div class="left">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/foot.png" alt="">
+          <img src="../themes/images/common/foot.png" alt="">
         </div>
         <div class="right">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/foot.png" alt="">
+          <img src="../themes/images/common/foot.png" alt="">
         </div>
       </div>
       <div class="head">
         <div class="ear">
           <div class="left">
-            <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/ear-left.png" alt="">
+            <img src="../themes/images/common/ear-left.png" alt="">
           </div>
           <div class="right">
-            <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/ear-right.png" alt="">
+            <img src="../themes/images/common/ear-right.png" alt="">
           </div>
         </div>
         <div class="eye">
           <div class="circle left">
             <div class="contour">
-              <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/eye-circle-left.png" alt="">
+              <img src="../themes/images/common/eye-circle-left.png" alt="">
             </div>
             <div class="eyebrow left">
-              <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/eyebrow-left.png" alt="">
+              <img src="../themes/images/common/eyebrow-left.png" alt="">
             </div>
             <div class="eyeball">
               <div class="pupil"></div>
@@ -77,10 +77,10 @@
           </div>
           <div class="circle right">
             <div class="contour">
-              <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/eye-circle-right.png" alt="">
+              <img src="../themes/images/common/eye-circle-right.png" alt="">
             </div>
             <div class="eyebrow right">
-              <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/eyebrow-right.png" alt="">
+              <img src="../themes/images/common/eyebrow-right.png" alt="">
             </div>
             <div class="eyeball">
               <div class="pupil"></div>
@@ -90,11 +90,11 @@
           </div>
         </div>
         <div class="mouth">
-          <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/mouth.png" alt="">
+          <img src="../themes/images/common/mouth.png" alt="">
         </div>
       </div>
       <div class="bamboo">
-        <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/bamboo.png" alt="">
+        <img src="../themes/images/common/bamboo.png" alt="">
       </div>
     </div>
     <div class="health" v-if="showHealth">

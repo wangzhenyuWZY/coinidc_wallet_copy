@@ -1,7 +1,7 @@
 <template>
   <div class="coins-rolling" ref="coins" :class="rolling">
     <div v-for="num in coinsNum" class="coin" :key="num" :class="'coin-' + num">
-      <img src="https://owlworld.oss-cn-hongkong.aliyuncs.com/images/common/coin.jpg" alt="">
+      <img src="../themes/images/common/coin.jpg" alt="">
     </div>
   </div>
 </template>

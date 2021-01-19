@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-        <div class="btns m_top20" @click="getWithdrawList">{{$t('mall6')}}</div>
+        <div class="btns m_top20" @click="showWithdrawList">{{$t('mall6')}}</div>
         <van-list
           v-model="loading"
           :finished="finished"
@@ -282,13 +282,13 @@
         <div class="play " @click="checkPlayWay"> <img src="../../assets/play.svg" alt=""> <span class="play_size">{{$t('mall84')}}</span> </div>
         <div class="play play1" @click="getNoticeList"> <img src="../../assets/announcement.svg" alt=""> <span
                 class="play_size p_announcement">{{$t('mall62')}}</span><a class="num" v-show="homeInfo.unReadNoticeCount">{{homeInfo.unReadNoticeCount}}</a> </div>
-        <div class="play play1 " @click="getPalaceOwls"> <img src="../../assets/mall.svg" alt=""> <span class="play_size p_mall">{{$t('mall59')}}</span> </div>
+        <div class="play play1 " @click="showNoticeList"> <img src="../../assets/mall.svg" alt=""> <span class="play_size p_mall">{{$t('mall59')}}</span> </div>
         <div class="play play1 " @click="showIncomme"> <img src="../../assets/earnings.svg" alt=""> <span class="play_size p_earnings">{{$t('mall85')}}</span>
         </div>
       </div>
       <div class="ps_nav">
         <div class="totalprice">{{$t('mall112')}}<span>{{homeInfo.usdtIncome}} USDT</span></div>
-        <div class="play " @click="getMyFriends"> <img src="../../assets/haoyou.png" alt=""> <span class="play_size">{{$t('mall91')}}</span> </div>
+        <div class="play " @click="showMyFriends"> <img src="../../assets/haoyou.png" alt=""> <span class="play_size">{{$t('mall91')}}</span> </div>
         <div class="play1 " @click="feeGold">
           <div class="ceter_img"><countTo v-if="homeInfo.goldBalance" ref="goldEl" :startVal='goldBalanceStart' :endVal='goldBalanceEnd' :duration='3000' :autoplay=false></countTo><span v-else>{{homeInfo.goldBalance}}</span></div> <span class="play_size">{{$t('mall87')}}</span>
         </div>
@@ -458,6 +458,18 @@ var timer = setInterval(function () {
     showIncomme(){
       this.incomeList = []
       this.getIncomeList()
+    },
+    showNoticeList(){
+      this.noticeList = []
+      this.getNoticeList()
+    },
+    showWithdrawList(){
+      this.withdrawList = []
+      this.getWithdrawList()
+    },
+    showMyFriends(){
+      this.friendList = []
+      this.getMyFriends()
     },
     getDrawCode(code){
       this.show77 = false
@@ -861,9 +873,14 @@ var timer = setInterval(function () {
         amount:this.withdrawNum
       }
       withdrawIncome(data).then((res)=>{
-        that.show8 = false
-        that.getHomeInfo()
-        Toast(that.$t('mall121'))
+        if(res.data.resultCode==999999){
+          that.show8 = false
+          that.getHomeInfo()
+          Toast(that.$t('mall121'))
+        }else{
+          Toast(res.data.resultDesc);
+        }
+        
         // if(res.data.resultCode==999999){
         //   Notify({ type: 'success', message: res.data.resultDesc });
         // }else{
