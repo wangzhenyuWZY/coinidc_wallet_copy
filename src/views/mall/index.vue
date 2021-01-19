@@ -282,7 +282,7 @@
         <div class="play " @click="checkPlayWay"> <img src="../../assets/play.svg" alt=""> <span class="play_size">{{$t('mall84')}}</span> </div>
         <div class="play play1" @click="getNoticeList"> <img src="../../assets/announcement.svg" alt=""> <span
                 class="play_size p_announcement">{{$t('mall62')}}</span><a class="num" v-show="homeInfo.unReadNoticeCount">{{homeInfo.unReadNoticeCount}}</a> </div>
-        <div class="play play1 " @click="showNoticeList"> <img src="../../assets/mall.svg" alt=""> <span class="play_size p_mall">{{$t('mall59')}}</span> </div>
+        <div class="play play1 " @click="getPalaceOwls"> <img src="../../assets/mall.svg" alt=""> <span class="play_size p_mall">{{$t('mall59')}}</span> </div>
         <div class="play play1 " @click="showIncomme"> <img src="../../assets/earnings.svg" alt=""> <span class="play_size p_earnings">{{$t('mall85')}}</span>
         </div>
       </div>
