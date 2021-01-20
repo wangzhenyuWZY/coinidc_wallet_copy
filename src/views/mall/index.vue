@@ -290,7 +290,7 @@
         <div class="totalprice">{{$t('mall112')}}<span>{{homeInfo.usdtIncome}} USDT</span></div>
         <div class="play " @click="showMyFriends"> <img src="../../assets/haoyou.png" alt=""> <span class="play_size">{{$t('mall91')}}</span> </div>
         <div class="play1 " @click="feeGold">
-          <div class="ceter_img"><countTo ref="goldEl" :startVal='goldBalanceStart' :endVal='goldBalanceEnd' :duration='3000' :autoplay=false></countTo></div> <span class="play_size">{{$t('mall87')}}</span>
+          <div class="ceter_img"><countTo ref="goldEl" :startVal='goldBalanceStart' :endVal='goldBalanceEnd' :duration='3000'></countTo></div> <span class="play_size">{{$t('mall87')}}</span>
         </div>
         <div class="play " @click="feedOwls"> <img src="../../assets/weiyang.svg" alt=""> <span class="play_size play_sizec">{{$t('mall88')}}</span> </div>
       </div>
@@ -541,7 +541,9 @@ export default {
           getIndexInfo().then(res=>{
             if(res.data.resultCode==999999){
               that.goldBalanceEnd = res.data.resultData.goldBalance
+              that.goldBalanceStart = that.homeInfo.goldBalance
               that.$refs.goldEl.start()
+              that.homeInfo = res.data.resultData
               // setTimeout(function(){
               //   that.getHomeInfo()
               // },3000)
@@ -564,6 +566,7 @@ export default {
           that.homeInfo = res.data.resultData
           that.homeInfo = Object.assign({}, that.homeInfo)
           that.goldBalanceStart = that.homeInfo.goldBalance
+          that.goldBalanceEnd = that.homeInfo.goldBalance
           if(that.$refs.goldEl){
             that.$refs.goldEl.reset()
           }
@@ -884,6 +887,7 @@ export default {
           that.getHomeInfo()
           Toast(that.$t('mall121'))
         }else{
+          that.show8 = true
           Toast(res.data.resultDesc);
         }
         
@@ -1024,7 +1028,7 @@ export default {
   bottom:0;
   left:0;
   z-index:9999;
-  background-color:rgba(0,0,0,0.8);
+  background-color:#Fff;
   background-image:url(../../assets/loading.gif);
   background-repeat: no-repeat;
   background-position: 50% 40%;
