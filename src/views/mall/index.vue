@@ -280,7 +280,7 @@
     <scene :mallList='mallList'>
       <div class="ps_list">
         <div class="play " @click="checkPlayWay"> <img src="../../assets/play.svg" alt=""> <span class="play_size">{{$t('mall84')}}</span> </div>
-        <div class="play play1" @click="getNoticeList"> <img src="../../assets/announcement.svg" alt=""> <span
+        <div class="play play1" @click="showNoticeList"> <img src="../../assets/announcement.svg" alt=""> <span
                 class="play_size p_announcement">{{$t('mall62')}}</span><a class="num" v-show="homeInfo.unReadNoticeCount">{{homeInfo.unReadNoticeCount}}</a> </div>
         <div class="play play1 " @click="getPalaceOwls"> <img src="../../assets/mall.svg" alt=""> <span class="play_size p_mall">{{$t('mall59')}}</span> </div>
         <div class="play play1 " @click="showIncomme"> <img src="../../assets/earnings.svg" alt=""> <span class="play_size p_earnings">{{$t('mall85')}}</span>
@@ -416,11 +416,12 @@ export default {
     if(!window.tronWeb){
       this.getTronWeb()
     }else{
-      this.allowance()
-      this.getUsdtBalance()
       window.tronWeb.trx.getBalance(window.tronWeb.defaultAddress.base58).then(res=>{
         that.trxBalance = res/Math.pow(10,6)
       })
+      this.allowance()
+      this.getUsdtBalance()
+      
     }
     this.getHomeInfo()
     this.getMyOwlList()
@@ -443,11 +444,12 @@ export default {
       window.tronWeb = new TronWeb(fullNode,solidityNode,eventServer,privateKey)
       if(window.tronWeb){
         window.tronWeb.setAddress(window.tronWeb.defaultAddress.base58)
-        that.allowance()
-        that.getUsdtBalance()
         window.tronWeb.trx.getBalance(window.tronWeb.defaultAddress.base58).then(res=>{
           that.trxBalance = res/Math.pow(10,6)
         })
+        that.allowance()
+        that.getUsdtBalance()
+        
       }
     },
     notDraw(){
