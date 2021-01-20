@@ -36,8 +36,8 @@
               <p>{{item.txHash}}</p>
               <p>{{item.timeStart}}</p>
             </div>
-            <div class="item_lt item_rg" :class="item.type==2?'green':'red'">
-              {{item.type==2?'+':'-'}}{{item.amount}}
+            <div class="item_lt item_rg" :class="item.type==2 || item.type==4?'green':'red'">
+              {{item.type==2 || item.type==4?'+':'-'}}{{item.amount}}
             </div>
         </van-cell>
       </van-list>
@@ -104,7 +104,7 @@ export default {
         type:this.navIndex
       }
       queryTransaction(params).then(res=>{
-        that.loading = true
+        that.loading = false
         if(res.data.resultCode==999999){
           res.data.resultData.forEach((item,index)=>{
             // item.txHash = that.plusXing(item.txHash,5,5)
@@ -132,6 +132,7 @@ export default {
       console.log(index)
     },
     nav(index) {
+      this.pageNum = 1
       this.navIndex = index
       this.transactionList = []
       this.getTransation()
@@ -197,7 +198,7 @@ export default {
   }
 }
 .wallet_scoll {
-  height: calc(100vh - 300px);
+  height: 350px;
   overflow: scroll;
   padding: 0 10px;
   padding-top: 14px;
