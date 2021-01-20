@@ -405,22 +405,22 @@ export default {
   },
   created(){
     let that  = this
-var timer = setInterval(function () {
-    // 判断文档和所有子资源(图片、音视频等)已完成加载
-    if (document.readyState === 'complete') {
-        //执行方法
-        that.isLoading = true
-        window.clearInterval(timer)
-    }
-}, 500)
+    var timer = setInterval(function () {
+        // 判断文档和所有子资源(图片、音视频等)已完成加载
+        if (document.readyState === 'complete') {
+            //执行方法
+            that.isLoading = true
+            window.clearInterval(timer)
+        }
+    }, 500)
     if(!window.tronWeb){
       this.getTronWeb()
     }else{
       this.allowance()
       this.getUsdtBalance()
       window.tronWeb.trx.getBalance(window.tronWeb.defaultAddress.base58).then(res=>{
-          that.trxBalance = res/Math.pow(10,6)
-        })
+        that.trxBalance = res/Math.pow(10,6)
+      })
     }
     this.getHomeInfo()
     this.getMyOwlList()
