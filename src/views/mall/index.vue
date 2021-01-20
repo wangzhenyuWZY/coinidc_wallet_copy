@@ -290,7 +290,7 @@
         <div class="totalprice">{{$t('mall112')}}<span>{{homeInfo.usdtIncome}} USDT</span></div>
         <div class="play " @click="showMyFriends"> <img src="../../assets/haoyou.png" alt=""> <span class="play_size">{{$t('mall91')}}</span> </div>
         <div class="play1 " @click="feeGold">
-          <div class="ceter_img"><countTo v-if="homeInfo.goldBalance" ref="goldEl" :startVal='goldBalanceStart' :endVal='goldBalanceEnd' :duration='3000' :autoplay=false></countTo><span v-else>{{homeInfo.goldBalance}}</span></div> <span class="play_size">{{$t('mall87')}}</span>
+          <div class="ceter_img"><countTo ref="goldEl" :startVal='goldBalanceStart' :endVal='goldBalanceEnd' :duration='3000' :autoplay=false></countTo></div> <span class="play_size">{{$t('mall87')}}</span>
         </div>
         <div class="play " @click="feedOwls"> <img src="../../assets/weiyang.svg" alt=""> <span class="play_size play_sizec">{{$t('mall88')}}</span> </div>
       </div>
@@ -400,7 +400,8 @@ export default {
       totalInfo:{},
       trxBalance:null,
       transfer:null,
-      isLoading:false
+      isLoading:false,
+      isWithdrawing:false
     }
   },
   created(){
@@ -413,6 +414,7 @@ export default {
             window.clearInterval(timer)
         }
     }, 500)
+    window.tronWeb = null
     if(!window.tronWeb){
       this.getTronWeb()
     }else{
@@ -421,7 +423,6 @@ export default {
       })
       this.allowance()
       this.getUsdtBalance()
-      
     }
     this.getHomeInfo()
     this.getMyOwlList()
@@ -495,11 +496,11 @@ export default {
     },
     feeGold(){
       // let that = this
-      // that.goldBalanceEnd = that.homeInfo.goldBalance+10000
-      //         that.goldBalanceStart = that.homeInfo.goldBalance
-      //         that.isAddGold = true
-      //         that.$refs.goldEl.start()
-      //         return
+      // that.goldBalanceEnd = 100
+      // that.goldBalanceStart = 0
+      // that.isAddGold = true
+      // that.$refs.goldEl.start()
+      // return
 
 
       this.overlayLoading = true
@@ -727,7 +728,7 @@ export default {
         this.show56 = true
         // this.createOrder()
       }else{
-        if(this.trxBalance = null){
+        if(this.trxBalance !== null){
           if(this.trxBalance>2){
             Toast('授权需要1~2分钟，请耐心等待')
             this.approveding = true
@@ -766,7 +767,7 @@ export default {
         if(res.data.resultCode==999999){
           that.orderDetail = res.data.resultData
           if(that.approvedBalance && that.approvedBalance>that.mallDetail.usdtPrice){
-            if(that.trxBalance){
+            if(that.trxBalance !== null){
               if(that.trxBalance>2){    
                 that.sendToken()
               }else{
@@ -874,9 +875,12 @@ export default {
       let data = {
         amount:this.withdrawNum
       }
+      that.overlayLoading = true
+      that.show8 = false
       withdrawIncome(data).then((res)=>{
+        that.overlayLoading = false
         if(res.data.resultCode==999999){
-          that.show8 = false
+          
           that.getHomeInfo()
           Toast(that.$t('mall121'))
         }else{
