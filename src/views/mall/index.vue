@@ -23,11 +23,7 @@
     <alert2 :show='show6' :label="$t('mall64')" @close="show6 = false" :mall="true" @closeback="show6 = false; show2= true;">
       <div class="ct_ditile">
         <div>{{noticeDetail.titleHk}}</div>
-        <p>
-          {{noticeDetail.detail}}
-          
-        </p>
-
+        <p v-html="noticeDetail.detail"></p>
       </div>
     </alert2>
     <!-- 我的收益 -->
@@ -683,6 +679,16 @@ export default {
       readNoticeContent({noticeId:item.id}).then(res=>{
         if(res.data.resultCode==999999){
           that.noticeDetail = res.data.resultData
+          let lang = getStore('lang')
+          if(lang=='zh_CN' || lang=='zh_HK'){
+            that.noticeDetail.detail = res.data.resultData.content.contentHk
+          }else if(lang=='en_US'){
+            that.noticeDetail.detail = res.data.resultData.content.contentEn
+          }else if(lang=='ja_JP'){
+            that.noticeDetail.detail = res.data.resultData.content.contentJp
+          }else if(lang=='ko_KR'){
+            that.noticeDetail.detail = res.data.resultData.content.contentKr
+          }
         }
       })
     },
