@@ -3,7 +3,7 @@
   <div class="container">
     <Title :title="$t('mall53')"></Title>
     <div class="createContainer">
-      <p class="createTitle">{{$t('mall53')}}助记词</p>
+      <p class="createTitle">{{$t('mall53')}}</p>
       <div class="mnem">
         <textarea class="input_text" v-model="mnemonic" :placeholder="$t('mall54')" />
       </div>
@@ -17,8 +17,8 @@
         <Input  :label="$t('mall45')" :placeholder="$t('mall45')" :showEye='false' v-model="passwordAgen" />
       </div>
       <div class="btn">
-        <!-- <van-button class="globel_button" style="margin-bottom:15px;"  @click="toKey">导入密钥
-        </van-button> -->
+        <van-button class="globel_button" style="margin-bottom:15px;"  @click="toKey">导入密钥
+        </van-button>
         <van-button class="globel_button" :loading="isConfirm" :disabled='isConfirm' type="info"  @click="handelClick">{{$t('mall20')}}
         </van-button>
       </div>

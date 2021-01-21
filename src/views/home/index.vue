@@ -6,7 +6,7 @@
       <van-cell :title="$t('mall72')" :value="namePsd.walletName" is-link arrow-direction @click="namepop=true" />
     </van-cell-group>
     <van-cell-group class="group">
-      <van-cell :title="$t('mall39')" value="" is-link arrow-direction @click="showMemo(1)" />
+      <van-cell :title="$t('mall39')" v-show="hasMnemonic" value="" is-link arrow-direction @click="showMemo(1)" />
       <van-cell :title="$t('mall38')" value="" is-link arrow-direction @click="showMemo(2)"/>
     </van-cell-group>
     <van-cell-group class="mycode">
@@ -86,7 +86,8 @@ export default {
       namepop:false,
       namePsd:{},
       inviteCode:getStore('myInviteCode'),
-      hasUserid:false
+      hasUserid:false,
+      hasMnemonic:false
     }
   },
   components: {
@@ -98,7 +99,10 @@ export default {
   created(){
     let namePsd = getStore('namepsd')
     this.namePsd = JSON.parse(namePsd)
-    
+    let mnemonic = getStore("mnemonic");
+    if (!objIsNull(mnemonic)) {
+      this.hasMnemonic = true
+    }
   },
   mounted() { 
      

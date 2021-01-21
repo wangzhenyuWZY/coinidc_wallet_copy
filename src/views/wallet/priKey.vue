@@ -8,6 +8,9 @@
         <textarea class="input_text" v-model="pwDerivedKey" placeholder="输入私钥" />
       </div>
       <div class="set_input">
+        <Input :label="$t('mall72')" :icon='false' :placeholder="$t('mall102')" v-model="name" />
+      </div>
+      <div class="set_input">
         <Input label="密码" :showEye='false' placeholder="钱包密码" v-model="password" />
       </div>
       <div class="set_input">
@@ -22,8 +25,9 @@
 </template>
 
 <script>
-var lightwallet = require('eth-lightwallet')
-var ethers = require('ethers')
+const hdkey = require('ethereumjs-wallet/dist/hdkey');
+const util = require('ethereumjs-util');
+const Wallet = require('ethereumjs-wallet');
 import Title from '@/components/Title'
 import Input from '@/components/Input'
 import { setStore} from "@/config/utils";
@@ -36,7 +40,8 @@ export default {
       password:'',
       passwordAgen:'',
       pwDerivedKey:'',
-      isConfirm:false
+      isConfirm:false,
+      name:''
     }
   },
   components: {
@@ -51,54 +56,32 @@ export default {
   },
   methods: {
     handelClick() {
-      let that = this
-      var privedKey = this.pwDerivedKey
-      var password = this.password;//密码
-      var global_keystore = null
-      let privateKey = null
-      let addresses = null
-      if (privedKey.substr(0, 2) !== "0x") {
-        privedKey = "0x" + privedKey;
+      if(this.password!==this.passwordAgen){
+        Toast(this.$t('mall110'))
+        return
       }
-    //   let wallet = new ethers.Wallet(privedKey)
-      let provider = ethers.getDefaultProvider();
-let walletWithProvider = new ethers.Wallet(privedKey, provider);
-      console.log(walletWithProvider.mnemonic)
-      let keyStore = new lightwallet.keystore()
-      let secretSeed = keyStore.getSeed(privedKey)
-      console.log(secretSeed)
-    //   return
-    //   if(!flag){
-    //     Toast('助记词有误')
-    //     return
-    //   }
-      this.isConfirm = true
-      lightwallet.keystore.createVault({
-          password: password,
-          seedPhrase: '',
-          //random salt
-          hdPathString: "m/44'/195'/0'/0"
-        }, function (err, ks) {
-          global_keystore = ks
-          global_keystore.keyFromPassword(password, function(err, pwDerivedKey) {
-            global_keystore.generateNewAddress(pwDerivedKey);
-            addresses = global_keystore.getAddresses()[0];
-            let secretSeed = global_keystore.getSeed(privedKey)
-            privateKey = global_keystore.exportPrivateKey(addresses,pwDerivedKey)
-            let wallet = {
-              privateKey:privateKey,
-              address:addresses
-            };
-            let walletItem = {}
-            walletItem.wallet = wallet;
-            walletItem.isFirstIn = true;
-            setStore('mnemonic', secretSeed);
-            setStore('walletItem', walletItem)
-            that.isConfirm = false
-            that.$router.push('/walletAssets/wallet')
-          })
-        })
-    }
+      let fixturePrivateKeyStr =  this.pwDerivedKey
+      let fixturePrivateKeyBuffer = Buffer.from(fixturePrivateKeyStr, 'hex')
+      let fixtureWallet = Wallet.default.fromPrivateKey(fixturePrivateKeyBuffer);
+      
+      let fixturePrivateKey = fixtureWallet.getPrivateKey().toString('hex');
+      let address = util.pubToAddress(fixtureWallet.getPublicKey(), true)
+      address = util.bufferToHex(address)
+      
+      let wallet = {
+        privateKey:this.pwDerivedKey,
+        address:address
+      };
+      let walletItem = {}
+      walletItem.wallet = wallet;
+      setStore('walletItem', walletItem)
+      let data = {
+          walletName:this.name,
+          walletPassword: this.password
+      }
+      setStore('namepsd', data)
+      this.$router.push('/walletAssets/wallet')
+    }  
   }
 }
 </script>
