@@ -1,23 +1,23 @@
 <!-- home -->
 <template>
   <div class="container">
-    <Title title="导入私钥"></Title>
+    <Title :title="$t('mall122')"></Title>
     <div class="createContainer">
-      <p class="createTitle">私钥</p>
+      <p class="createTitle">{{$t('mall123')}}</p>
       <div class="mnem">
-        <textarea class="input_text" v-model="pwDerivedKey" placeholder="输入私钥" />
+        <textarea class="input_text" v-model="pwDerivedKey" :placeholder="$t('mall124')" />
       </div>
       <div class="set_input">
         <Input :label="$t('mall72')" :icon='false' :placeholder="$t('mall102')" v-model="name" />
       </div>
       <div class="set_input">
-        <Input label="密码" :showEye='false' placeholder="钱包密码" v-model="password" />
+        <Input :label="$t('mall22')" :showEye='false' :placeholder="$t('mall23')" v-model="password" />
       </div>
       <div class="set_input">
-        <Input placeholder="确认密码" :showEye='false' v-model="passwordAgen" />
+        <Input :label="$t('mall45')" :placeholder="$t('mall45')" :showEye='false' v-model="passwordAgen" />
       </div>
       <div class="btn">
-        <van-button class="globel_button" :loading="isConfirm" :disabled='isConfirm' type="info"  @click="handelClick">确定
+        <van-button class="globel_button" :loading="isConfirm" :disabled='isConfirm' type="info"  @click="handelClick">{{$t('mall20')}}
         </van-button>
       </div>
     </div>

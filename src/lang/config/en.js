@@ -120,5 +120,8 @@ module.exports = {
   mall118:'Active citizens',
   mall119:'Successful purchase, your owl will hatch in a few minutes!',
   mall120:'Please fill in the withdrawal quantity',
-  mall121:'Withdraw currency successfully, please wait for block confirmation'
+  mall121:'Withdraw currency successfully, please wait for block confirmation',
+  mall122:'Import private key',
+  mall123:'Private key',
+  mall124:'Enter the private key'
 }

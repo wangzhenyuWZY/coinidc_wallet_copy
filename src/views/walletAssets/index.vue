@@ -4,7 +4,8 @@
         <img src="../../assets/Group.png" />
         <div class="btnbox">
             <router-link to="/wallet/step1" class="btn active">{{$t('mall41')}}</router-link>
-            <router-link to="/wallet/mnemonic" class="btn">{{$t('mall114')}}</router-link>    
+            <router-link to="/wallet/mnemonic" class="btn">{{$t('mall53')}}</router-link>  
+            <router-link to="/wallet/priKey" class="btn">{{$t('mall122')}}</router-link>   
         </div>
     </div>
 </template>
