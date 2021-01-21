@@ -679,6 +679,7 @@ export default {
     getNoticeDetail(item){
       this.show6 = true
       this.show2 = false
+      let that = this
       readNoticeContent({noticeId:item.id}).then(res=>{
         if(res.data.resultCode==999999){
           that.noticeDetail = res.data.resultData
