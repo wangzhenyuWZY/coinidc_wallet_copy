@@ -123,5 +123,6 @@ module.exports = {
   mall121:'Withdraw currency successfully, please wait for block confirmation',
   mall122:'Import private key',
   mall123:'Private key',
-  mall124:'Enter the private key'
+  mall124:'Enter the private key',
+  mall70:'去支付'
 }

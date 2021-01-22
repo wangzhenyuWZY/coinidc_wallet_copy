@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="mall3btn">
-          <div @click="doDraw">{{$t('mall60')}}</div>
+          <el-button class="drawBtn" :class="isDrawing?'disabled':''" :loading='isDrawing' :disabled="isDrawing" @click="doDraw">{{drawCode?$t('mall70'):$t('mall60')}}</el-button>
         </div>
       </div>
     </alert2>
@@ -52,9 +52,10 @@ import { Toast } from 'vant'
                 chars : ['1', '2', '3', '4', '5', '6', '7'],
 				awardCode: [
 					{name: 'oneDigit', value: require('@/assets/mall1.png')},
-					{name: 'tenDigit', value: require('@/assets/mall1.png')},
-					{name: 'hundredsDigit', value: require('@/assets/mall1.png')}
-				],
+					{name: 'tenDigit', value: require('@/assets/mall2.png')},
+					{name: 'hundredsDigit', value: require('@/assets/mall3.png')}
+        ],
+        isDrawing:false
 			}
 		},
 		props:{
@@ -65,6 +66,10 @@ import { Toast } from 'vant'
       drawNum:{
           type:Number,
           default:1
+      },
+      drawCode:{
+        type:[String,Number,Object],
+        default:''
       }
     },
     created(){
@@ -75,27 +80,38 @@ import { Toast } from 'vant'
 		methods: {
             doDraw(){
                 let that = this
-                this.start()
-                this.start_one()
-                this.start_two()
-                setTimeout(function(){
-                    getdraw({'owlLevel':that.drawNum}).then(res=>{
-                        that.end()
-                        if(res.data.resultCode==999999){
-                            if(res.data.resultData.result=='Y'){
-                                that.drawCode = res.data.resultData
-                                that.$emit('drawcode',drawCode)
-                            }else{
-                              that.$emit('notDraw')
-                            }
-                        }else if(res.data.resultCode=100006){
-                            that.$emit('notGold')
-                        }else{
-
-                        }
-                    })
-                },2000)
-                
+                if(this.isDrawing){
+                  return
+                }
+                if(that.drawCode){
+                  that.$emit('drawcode',that.drawCode)
+                }else{
+                  this.isDrawing = true
+                  this.start()
+                  this.start_one()
+                  this.start_two()
+                  setTimeout(function(){
+                      getdraw({'owlLevel':that.drawNum}).then(res=>{
+                          that.isDrawing = false
+                          if(res.data.resultCode==999999){
+                              if(res.data.resultData.result=='Y'){
+                                  that.end(true)
+                                  Toast('恭喜您中奖！')
+                                  that.drawCode = res.data.resultData
+                                  that.$emit('hasDrawCode',res.data.resultData)
+                              }else{
+                                that.end(false)
+                                that.$emit('notDraw')
+                              }
+                          }else if(res.data.resultCode=100006){
+                              that.end(false)
+                              that.$emit('notGold')
+                          }else{
+                              that.end(false)
+                          }
+                      })
+                  },2000)
+                }
             },
             closePop(){
                 this.$emit('closepop')
@@ -110,15 +126,22 @@ import { Toast } from 'vant'
 					}, 300)
 				}
 			},
-			end(i) {
-                this.awardCode[0].value = require('@/assets/mall'+this.drawNum+'.png')
-                this.awardCode[1].value = require('@/assets/mall'+this.drawNum+'.png')
-                this.awardCode[2].value = require('@/assets/mall'+this.drawNum+'.png')
-				clearInterval(this.interval)
-                this.interval = null
-                clearInterval(this.interval_one)
-                this.interval_one = null
-                clearInterval(this.interval_two)
+			end(flag) {
+        if(flag){
+          this.awardCode[0].value = require('@/assets/mall'+this.drawNum+'.png')
+          this.awardCode[1].value = require('@/assets/mall'+this.drawNum+'.png')
+          this.awardCode[2].value = require('@/assets/mall'+this.drawNum+'.png')
+        }else{
+          this.awardCode[0].value = require('@/assets/mall2.png')
+          this.awardCode[1].value = require('@/assets/mall3.png')
+          this.awardCode[2].value = require('@/assets/mall4.png')
+        }
+        
+        clearInterval(this.interval)
+        this.interval = null
+        clearInterval(this.interval_one)
+        this.interval_one = null
+        clearInterval(this.interval_two)
 				this.interval_two = null
 			},
 			start_one() {
@@ -260,7 +283,8 @@ import { Toast } from 'vant'
   .mall3btn {
     margin-top: 18px;
     padding-bottom: 8px;
-    div {
+    .drawBtn {
+      display:block;
       background: url(../../assets/mall3btn.svg) no-repeat;
       background-size: 100% 100%;
       width: 170px;
@@ -271,6 +295,11 @@ import { Toast } from 'vant'
       color: #ffffff;
       text-align: center;
       margin: 0 auto;
+      border-radius:25px;
+      &.disabled{
+        background:#eee;
+      }
+
     }
   }
 }

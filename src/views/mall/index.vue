@@ -151,7 +151,7 @@
         </div>
       </div>
     </mallmodel>
-    <alert2 :show='show55' :label="$t('mall59')" @close="show55 = false" @closeback="show55 = false; show5= true;">
+    <alert2 :show='show55' :label="$t('mall59')" @close="closePay">
 
       <div class="mall2">
         <div class="ditals_bg">
@@ -167,7 +167,7 @@
         <van-button class="btns" :loading="approveding" :disabled='approveding' type="info" :loading-text="isApproved?$t('mall70'):$t('mall71')" @click="checkAppreve">{{isApproved?$t('mall70'):$t('mall71')}}</van-button>
       </div>
     </alert2>
-    <alert2 :show='show56' :label="$t('mall22')" @close="show56 = false" @closeback="show56 = false;">
+    <alert2 :show='show56' :label="$t('mall22')" @close="show56 = false" @closeback="show56 = false;mallDetail = []">
       <div class="mall2">
         <div class="ditals_bg">
           <div class="dital2" style="border-radius:0;box-shadow:none;">
@@ -292,7 +292,7 @@
       </div>
     </scene>
     <coinsRolling :show="isAddGold" @close="isAddGold=false" class="coinsroll"></coinsRolling>
-    <chouJing :show='show77' @closepop='show77=false;show5=true' @notDraw='notDraw' @notGold='show7=true;show77=false' @drawcode='getDrawCode' :drawNum='mallDetail.level'></chouJing>
+    <chouJing v-if="show77" :show='show77' :drawCode='drawCode' @closepop='show77=false;show5=true;drawCode=""' @hasDrawCode='hasDrawCode' @notDraw='notDraw' @notGold='show7=true;show77=false' @drawcode='getDrawCode' :drawNum='mallDetail.level'></chouJing>
     <van-overlay :show="overlayLoading" @click="overlayLoading = false">
       <van-loading />
     </van-overlay>
@@ -449,10 +449,18 @@ export default {
         
       }
     },
+    closePay(){
+      this.show55 = false;
+      this.drawCode=""
+      this.mallDetail = []
+    },
     notDraw(){
-      this.show77 = false
+      // this.show77 = false
       Toast('未中奖')
-      this.show5 = true
+      // this.show5 = true
+    },
+    hasDrawCode(res){
+      this.drawCode = res
     },
     showIncomme(){
       this.incomeList = []
@@ -472,8 +480,7 @@ export default {
     },
     getDrawCode(code){
       this.show77 = false
-      this.show5 = true
-      this.mallDetail.buyType=='buy'
+      this.show55 = true
       this.drawCode = code
     },
     setIndex(item,index) {
@@ -627,6 +634,7 @@ export default {
         if(res.data.resultCode==999999){
           that.mallPlace = res.data.resultData
           that.mallDetail = res.data.resultData[0]
+          that.toindex = 0
           if(that.approvedBalance && that.approvedBalance>that.mallDetail.usdtPrice){
             that.isApproved = true
           }else{
@@ -916,6 +924,7 @@ export default {
           that.show55 = false
           that.show56 = false
           that.paying = false
+          that.mallDetail = []
           that.closeMall()
           Toast(that.$t('mall119'))
           that.sendTransfer()
