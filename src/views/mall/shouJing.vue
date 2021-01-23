@@ -97,8 +97,8 @@ import { Toast } from 'vant'
                               if(res.data.resultData.result=='Y'){
                                   that.end(true)
                                   Toast('恭喜您中奖！')
-                                  that.drawCode = res.data.resultData
-                                  that.$emit('hasDrawCode',res.data.resultData)
+                                  that.drawCode = res.data.resultData.code
+                                  that.$emit('hasDrawCode',res.data.resultData.code)
                               }else{
                                 that.end(false)
                                 that.$emit('notDraw')
