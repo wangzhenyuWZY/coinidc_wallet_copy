@@ -40,7 +40,8 @@ export default {
       show: false,
       show1: false,
       reading: false,
-      wordsList:[]
+      wordsList:[],
+      walletItem:{}
     }
   },
   components: {
@@ -49,10 +50,18 @@ export default {
   computed: {
     
   },
+  created(){
+
+  },
   mounted() {
-    let mnemonic = getStore("mnemonic");
-    if (!objIsNull(mnemonic)) {
-      this.wordsList = mnemonic.split(" ");
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+      this.wordsList = this.walletItem.mnemonic.split(" ");
     }
   },
   methods: {

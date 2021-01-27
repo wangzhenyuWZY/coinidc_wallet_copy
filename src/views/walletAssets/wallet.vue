@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="title_bg">
-      <Title :title="$t('mall1')" :isback="false" hide></Title>
+      <!-- <Title :title="$t('mall1')" :isback="false" hide></Title> -->
       <div class="assetsDtal">
         <p>{{totalBalance}} IDCT</p>
         <!-- <p>≈{{convertedBalance}}</p> -->
       </div>
       <div class="wallet_btn">
-        <router-link tag="div" to="/walletAssets/transfer" class="btn">{{$t('mall2')}}</router-link>
-        <router-link tag="div" to="/walletAssets/collection" class="btn">{{$t('mall3')}}</router-link>
+        <router-link tag="div" to="/walletAssets/transfer" class="btn"><i class="zzico"></i>{{$t('mall2')}}</router-link>
+        <router-link tag="div" to="/walletAssets/collection" class="btn"><i class="skico"></i>{{$t('mall3')}}</router-link>
       </div>
     </div>
     <div class="wallet_scoll">
@@ -66,10 +66,18 @@
         </template>
         <div class="tabbar_zise">{{$t('mall9')}}</div>
       </van-tabbar-item>
+      <van-tabbar-item  @click="toWalletList">
+        <template>
+          <div class="tabbar_img">
+            <img :src="active == 2?require('../../assets/walletSel.png'):require('../../assets/wallet.png')" />
+          </div>
+        </template>
+        <div class="tabbar_zise">{{$t('mall1')}}</div>
+      </van-tabbar-item>
       <van-tabbar-item @click="toHome">
         <template>
           <div class="tabbar_img">
-            <img :src="active == 2?require('../../assets/meIcoActive.png'):require('../../assets/meIco.png')" />
+            <img :src="active == 3?require('../../assets/meIcoActive.png'):require('../../assets/meIco.png')" />
           </div>
         </template>
         <div class="tabbar_zise">{{$t('mall99')}}</div>
@@ -98,6 +106,7 @@ export default {
       freeNetBi:0,
       walletInfo:{},
       isLoading:false,
+      walletItem:{},
       coinList:[{
         name:'TRX',
         decimals:6,
@@ -124,17 +133,15 @@ export default {
     VanPullRefresh:PullRefresh
   },
   created(){
-    if(!window.tronWeb){
-      this.createTronWeb()
-    }else{
-      
-      let token = getStore('token')
-      if(!token){
-        this.userLogin()
-      }else{
-        this.getMyToken()
-      }
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
     }
+    this.createTronWeb()
     let idctUserId = this.getUrlKey('idctUserId',window.location.href)
     if(idctUserId){
       setStore('idctUserId',idctUserId)
@@ -180,18 +187,18 @@ export default {
                   path: "/home"
               });
     },
+    toWalletList(){
+      this.$router.push({
+                  path: "/walletAssets/walletList"
+              });
+    },
     onChange(index) {
       this.active = index
       console.log(index)
     },
     createTronWeb(){
       let that = this
-      let walletItem = getStore("walletItem");
-      let privateKey = ''
-      if (!objIsNull(walletItem)) {
-        walletItem = JSON.parse(walletItem)
-        privateKey = walletItem.wallet.privateKey
-      }
+      let privateKey = this.walletItem.privateKey
       const fullNode = 'https://api.trongrid.io';
       const solidityNode = 'https://api.trongrid.io';
       const eventServer = 'https://api.trongrid.io';
@@ -200,7 +207,7 @@ export default {
         window.tronWeb.setAddress(window.tronWeb.defaultAddress.base58)
         let token = getStore('token')
         if(!token){
-          this.userLogin()
+          // this.userLogin()
         }else{
           this.getMyToken()
         }
@@ -264,13 +271,11 @@ export default {
     },
     userLogin(){
       let that = this
-      let namePsd = getStore('namepsd')
-      namePsd = JSON.parse(namePsd)
-      let walletName = namePsd.walletName
+      let walletName = this.walletItem.walletName
         let data = {
           name:walletName,
           idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-          inviteCode:getStore('inviteCode'),
+          inviteCode:this.walletItem.inviteCode,
           trxAddress:window.tronWeb.defaultAddress.base58
         }
         login(data).then((res)=>{
@@ -303,13 +308,14 @@ export default {
 
 <style lang="less" scoped>
 .title_bg {
-  height: 236px;
-  background: url(../../assets/bg2.png) no-repeat;
-  background-size: 100% 100%;
+  height: 180px;
+  background: linear-gradient(90deg, #394CCC 0%, #2538B4 100%);
+  border-radius: 0px 0px 20px 20px;
   .assetsDtal {
     padding-top: 33px;
+    padding-left:20px;
     p {
-      text-align: center;
+      text-align: left;
     }
     p:nth-child(1) {
       font-size: 28px;
@@ -323,20 +329,38 @@ export default {
     }
   }
   .wallet_btn {
-    display: flex;
     padding: 0 20px;
     justify-content: space-between;
     margin-top: 45px;
+    overflow:hidden;
     .btn {
-      width: 48%;
-      height: 36px;
-      background: #ffffff;
-      border-radius: 4px;
-      font-size: 14px;
+      float:left;
+      width: 110px;
+      height: 32px;
+      background: #FFFFFF;
+      border-radius: 18px;
+      font-size: 11px;
       font-weight: 500;
-      color: #4f5f7f;
+      color: #121212;
       text-align: center;
-      line-height: 36px;
+      line-height: 32px;
+      margin-right:20px;
+      i{
+        display:inline-block;
+        vertical-align: middle;
+        width:12px;
+        height:12px;
+        margin-right:6px;
+        margin-top:-2px;
+        &.zzico{
+          background:url(../../assets/zzico.png) no-repeat center;
+          background-size:100% 100%;
+        }
+        &.skico{
+          background:url(../../assets/skico.png) no-repeat center;
+          background-size:100% 100%;
+        }
+      }
     }
   }
 }
@@ -402,26 +426,17 @@ font-family: PingFangSC-Regular, PingFang SC;
           p {
             display: flex;
             justify-content: space-between;
+            font-size: 12px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #8997b3;
+            &:first-child{
+              font-size:14px;
+              color:#000000;
+              font-weight:600;
+            }
             &:nth-child(2) {
               margin-top: 2px;
-            }
-            
-            span {
-              &:nth-child(1) {
-                font-size: 12px;
-                font-family: PingFangSC-Medium, PingFang SC;
-                font-weight: 500;
-                color: #000000;
-              }
-              &:nth-child(2) {
-                font-size: 12px;
-                font-family: PingFangSC-Medium, PingFang SC;
-                font-weight: 500;
-                color: #8997b3;
-              }
-            }
-            &:first-child{
-              span{font-weight:600;}
             }
           }
         }

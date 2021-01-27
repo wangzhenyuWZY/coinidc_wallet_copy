@@ -25,5 +25,9 @@ export const constantRouterMap = [
   { path: '/mall', name: 'mall', component: () => import('@/views/mall/index'),meta: {title: 'Owl World'} }, // 玩法说明
   { path: '/validation/beifen', name: 'beifen', component: () => import('@/views/validation/beifen') },
   { path: '/walletAssets/index', name: 'walletHome', component: () => import('@/views/walletAssets/index') },
-  { path: '/wallet/priKey', name: 'priKey', component: () => import('@/views/wallet/priKey') }
+  { path: '/wallet/priKey', name: 'priKey', component: () => import('@/views/wallet/priKey') },
+  { path: '/wallet/confirmImport', name: 'confirmImport', component: () => import('@/views/wallet/confirmImport') },
+  { path: '/walletAssets/walletList', name: 'walletList', component: () => import('@/views/walletAssets/walletList') },
+  { path: '/walletAssets/assetsDetail', name: 'assetsDetail', component: () => import('@/views/walletAssets/assetsDetail') },
+  { path: '/walletAssets/transferDetail', name: 'transferDetail', component: () => import('@/views/walletAssets/transferDetail') }
 ]

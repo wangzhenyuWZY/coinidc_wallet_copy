@@ -20,6 +20,7 @@ const api = {
   queryTransaction:'/wallet/queryTransaction',
   queryMyTeamOwl:'/owl/queryMyTeamOwl',
   checkIdct:'/user/check',
+  preImport:'/wallet/preImport',
 }
 
 export default api

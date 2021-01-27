@@ -3,7 +3,7 @@
     <div class="input_lable" v-show="label">{{label}}</div>
     <div class="globle_input">
       <div class="input_lt">
-        <input :type="showEye ?'text':'password'" :placeholder="placeholder" @keyup="hdelClick">
+        <input :type="showEye ?'text':'password'" :placeholder="placeholder" v-model="modelVal" @keyup="hdelClick">
       </div>
       <div class="rg_icon" v-show="icon">
         <span>
@@ -18,6 +18,10 @@
 <script>
 export default {
   props: {
+    modelVal: {
+      type:String,
+      default:''
+    },
     label: {
 
     },

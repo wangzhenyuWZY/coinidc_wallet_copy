@@ -124,6 +124,8 @@ module.exports = {
   mall122:'导入私钥',
   mall123:'私钥',
   mall124:'输入私钥',
-  mall70:'去支付'
+  mall70:'去支付',
+  mall125:'钱包地址'
+  
   
 }

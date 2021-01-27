@@ -32,7 +32,8 @@ export default {
       navIndex: 1,
       codeUrl: 'www.baidu.com',
       walletName:'',
-      address:''
+      address:'',
+      walletItem:{}
     }
   },
   components: {
@@ -40,6 +41,15 @@ export default {
     VueQr
   },
   created(){
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+    }
+
     this.address = getStore('trxAddress')
     // if(window.tronWeb){
     //   this.address = window.tronWeb.defaultAddress.base58
@@ -48,9 +58,7 @@ export default {
     //   this.createTronWeb()
     // }
     
-    let namePsd = getStore('namepsd')
-    namePsd = JSON.parse(namePsd)
-    this.walletName = namePsd.walletName
+    this.walletName = this.walletItem.walletName
   },
   methods: {
     onChange(index) {
@@ -62,12 +70,7 @@ export default {
     },
     createTronWeb(){
       let that = this
-      let walletItem = getStore("walletItem");
-      let privateKey = ''
-      if (!objIsNull(walletItem)) {
-        walletItem = JSON.parse(walletItem)
-        privateKey = walletItem.wallet.privateKey
-      }
+      let privateKey = this.walletItem.privateKey
       const fullNode = 'https://api.trongrid.io';
       const solidityNode = 'https://api.trongrid.io';
       const eventServer = 'https://api.trongrid.io';

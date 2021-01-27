@@ -109,7 +109,8 @@ export default {
       coinList:[],
       transNum:0,
       password:'',
-      isTransing:false
+      isTransing:false,
+      walletItem:{}
     }
   },
   components: {
@@ -119,6 +120,14 @@ export default {
     vanOverlay:Overlay
   },
   created(){
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+    }
     if(!window.tronWeb){
       this.createTronWeb()
     }else{
@@ -180,9 +189,7 @@ export default {
     async doTransfer(){
       let that = this
       this.show56 = false
-      let namePsd = getStore('namepsd')
-      namePsd = JSON.parse(namePsd)
-      let passwordTrue = namePsd.walletPassword
+      let passwordTrue = this.walletItem.walletPassword
       if(this.password!==passwordTrue){
         Notify({ type: 'warning', message: this.$t('mall28')  });
         return
@@ -212,7 +219,6 @@ export default {
           {'type':'address','value':this.toAccount},
           {'type':'uint256','value':transNum.toFixed()}
         ]
-        console.log(this.transferCoin.contract,func)
         let transfer = await window.tronWeb.transactionBuilder.triggerSmartContract(this.transferCoin.contract,func, {},params)
         window.tronWeb.trx.sign(transfer.transaction).then(function(signedTransaction) {
             window.tronWeb.trx
@@ -233,12 +239,7 @@ export default {
     },
     createTronWeb(){
       let that = this
-      let walletItem = getStore("walletItem");
-      let privateKey = ''
-      if (!objIsNull(walletItem)) {
-        walletItem = JSON.parse(walletItem)
-        privateKey = walletItem.wallet.privateKey
-      }
+      let privateKey = this.walletItem.privateKey
       const fullNode = 'https://api.trongrid.io';
       const solidityNode = 'https://api.trongrid.io';
       const eventServer = 'https://api.trongrid.io';
