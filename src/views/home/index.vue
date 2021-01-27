@@ -31,10 +31,18 @@
         </template>
         <div class="tabbar_zise">{{$t('mall9')}}</div>
       </van-tabbar-item>
+      <van-tabbar-item @click="toWalletList">
+        <template>
+          <div class="tabbar_img">
+            <img :src="active == 2?require('../../assets/walletSel.png'):require('../../assets/wallet.png')" />
+          </div>
+        </template>
+        <div class="tabbar_zise">{{$t('mall1')}}</div>
+      </van-tabbar-item>
       <van-tabbar-item>
         <template>
           <div class="tabbar_img">
-            <img :src="activeNav == 2?require('../../assets/meIcoActive.png'):require('../../assets/meIco.png')" />
+            <img :src="activeNav == 3?require('../../assets/meIcoActive.png'):require('../../assets/meIco.png')" />
           </div>
         </template>
         <div class="tabbar_zise">{{$t('mall99')}}</div>
@@ -81,13 +89,15 @@ export default {
       psdpop:false,
       password:'',
       active:0,
-      activeNav:2,
+      activeNav:3,
       username:'',
       namepop:false,
       namePsd:{},
       inviteCode:getStore('myInviteCode'),
       hasUserid:false,
-      hasMnemonic:false
+      hasMnemonic:false,
+      walletList:[],
+      walletItem:{}
     }
   },
   components: {
@@ -97,11 +107,16 @@ export default {
   },
   computed: {},
   created(){
-    let namePsd = getStore('namepsd')
-    this.namePsd = JSON.parse(namePsd)
-    let mnemonic = getStore("mnemonic");
-    if (!objIsNull(mnemonic)) {
-      this.hasMnemonic = true
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      this.walletList = JSON.parse(walletList)
+      let walletItem = this.walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+      if (!objIsNull(this.walletItem.mnemonic)) {
+        this.hasMnemonic = true
+      }
     }
   },
   mounted() { 
@@ -116,6 +131,11 @@ export default {
     toWallet(){
       this.$router.push({
                   path: "/walletAssets/wallet"
+              });
+    },
+    toWalletList(){
+      this.$router.push({
+                  path: "/walletAssets/walletList"
               });
     },
     showMemo(type){
@@ -136,9 +156,7 @@ export default {
       });
     },
     confirmShow(){
-      let namePsd = getStore('namepsd')
-      namePsd = JSON.parse(namePsd)
-      let passwordTrue = namePsd.walletPassword
+      let passwordTrue = this.walletItem.walletPassword
       if(this.password!==passwordTrue){
         Toast(this.$t('mall28'))
         return
@@ -153,8 +171,12 @@ export default {
       let that = this
       updateName({name:this.username}).then(res=>{
         if(res.data.resultCode=='999999'){
-          that.namePsd.walletName = this.username
-          setStore('namepsd',that.namePsd)
+          that.walletList.forEach((item,index)=>{
+            if(item.isCurrent){
+              item.walletName = this.username
+            }
+          })
+          setStore('walletList',JSON.stringify(that.walletList))
           Toast(that.$t('mall105'))
           this.username = ''
           that.namepop = false

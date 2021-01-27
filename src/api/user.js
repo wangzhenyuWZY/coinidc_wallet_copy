@@ -11,6 +11,15 @@ export function login(data) {
   )
 }
 
+// 预导入
+export function preImport(data) {
+  return request(
+    api.preImport,
+    'post',
+    data
+  )
+}
+
 // 查询猫头鹰
 export function queryMyOwlList(data) {
   return request(

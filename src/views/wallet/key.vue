@@ -34,7 +34,8 @@ export default {
   data() {
     return {
       title: '创建钱包',
-      privateKey:'11'
+      privateKey:'11',
+      walletItem:{}
     }
   },
   methods: {
@@ -57,12 +58,15 @@ export default {
     }
   },
   created(){
-    let walletItem = getStore("walletItem");
-    debugger
-    if (!objIsNull(walletItem)) {
-      walletItem = JSON.parse(walletItem)
-      this.privateKey = walletItem.wallet.privateKey
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
     }
+    this.privateKey = this.walletItem.privateKey
   }
 }
 </script>

@@ -55,10 +55,9 @@ export const objIsNull = data => {
  * 判断值是否是空 是空返回true，不是空返回false；
  * @param data
  */
-export const createWallet = (userpassword) => {
+export const createWallet = (username,userpassword,inviteCode) => {
   return new Promise((resolve, reject) => {
     var secretSeed = lightwallet.keystore.generateRandomSeed();//注记词
-    debugger
     var password = userpassword;//密码
     var global_keystore = null
     let privateKey = null
@@ -76,16 +75,18 @@ export const createWallet = (userpassword) => {
           // addresses = addresses.substring(2,addresses.length)
           // addresses = '41'+addresses
           privateKey = global_keystore.exportPrivateKey(addresses,pwDerivedKey)
-          let wallet = {
+          let walletItem = {
+            mnemonic:secretSeed,
             privateKey:privateKey,
-            address:addresses
-          };
-          let walletItem = {}
-          walletItem.wallet = wallet;
-          walletItem.isFirstIn = true;
-          setStore('mnemonic', secretSeed);
-          setStore('walletItem', walletItem);
-          resolve(wallet);
+            address:addresses,
+            isFirstIn:true,
+            walletName:username,
+            walletPassword:userpassword,
+            isCurrent:true,
+            inviteCode:inviteCode
+          }
+          // setStore('walletItem', walletItem);
+          resolve(walletItem);
         })
       })
     // 生成助记词

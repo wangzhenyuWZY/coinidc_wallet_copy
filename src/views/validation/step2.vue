@@ -48,7 +48,8 @@ export default {
       disabled:true,
       mnemonic:[],
       wordsList:[],
-      wordsListCopy:[]
+      wordsListCopy:[],
+      walletItem:{}
     }
   },
   components: {
@@ -65,18 +66,27 @@ export default {
 
   },
   mounted() {
-    let mnemonic = getStore("mnemonic");
-    if (!objIsNull(mnemonic)) {
-      this.mnemonic = mnemonic.split(" ");
-      console.log(this.mnemonic)
-      this.mnemonic = this.mnemonic.sort(function(){return Math.random()>0.5?-1:1;});
-      this.mnemonic.forEach(element => {
-        this.wordsList.push({
-          mnemonic:element,
-          show:false
-        })
-      });
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+      let mnemonic = this.walletItem.mnemonic.split(" ");
+      if (!objIsNull(mnemonic)) {
+        this.mnemonic = mnemonic.split(" ");
+        console.log(this.mnemonic)
+        this.mnemonic = this.mnemonic.sort(function(){return Math.random()>0.5?-1:1;});
+        this.mnemonic.forEach(element => {
+          this.wordsList.push({
+            mnemonic:element,
+            show:false
+          })
+        });
+      }
     }
+    
   },
   methods: {
     checkWordList() {
@@ -95,8 +105,7 @@ export default {
     },
     toHome(){
       let wordsListCopy = this.wordsListCopy.join(' ')
-      let mnemonic = getStore("mnemonic");
-      if(wordsListCopy!==mnemonic){
+      if(wordsListCopy!==this.walletItem.mnemonic){
         alert('顺序有误')
         return
       }
@@ -104,14 +113,6 @@ export default {
       let walletList = JSON.parse(getStore("walletList"));
       let walletItem = JSON.parse(getStore("walletItem"));
       this.$set(walletItem, "details", wallet);
-      if (objIsNull(walletList) || walletList.length == 0) {
-        let list = [];
-        list.push(walletItem);
-        setStore("walletList", list);
-      } else {
-        walletList.push(walletItem);
-        setStore("walletList", walletList);
-      }
       this.$router.push('/wallet/step2')
       // this.$router.replace({ name: "wallet" });
     },
