@@ -879,7 +879,7 @@ export default {
                   that.mallName = ''
                   Toast(window.tronWeb.toAscii(e.contractResult[0]))
                 }else{
-                  
+                  window.location.reload()
                 }
               })
             })
