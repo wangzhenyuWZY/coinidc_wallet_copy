@@ -387,7 +387,7 @@ export default {
       pageNum2:0,
       loading3: false,
       finished3: false,
-      pageNum3:0,
+      pageNum3:1,
       isAddGold:false,
       goldBalanceStart:0,
       goldBalanceEnd:0,
@@ -468,18 +468,22 @@ export default {
     },
     showIncomme(){
       this.incomeList = []
+      this.pageNum = 0
       this.getIncomeList()
     },
     showNoticeList(){
       this.noticeList = []
+      this.pageNum1 = 0
       this.getNoticeList()
     },
     showWithdrawList(){
       this.withdrawList = []
+      this.pageNum2 = 0
       this.getWithdrawList()
     },
     showMyFriends(){
       this.friendList = []
+      this.pageNum3 = 1
       this.getMyFriends()
     },
     getDrawCode(code){
@@ -569,7 +573,6 @@ export default {
       let that = this
       getIndexInfo().then(res=>{
         if(res.data.resultCode==999999){
-          
           that.homeInfo = res.data.resultData
           that.homeInfo = Object.assign({}, that.homeInfo)
           that.goldBalanceStart = that.homeInfo.goldBalance
@@ -585,8 +588,8 @@ export default {
       that.show4 = true
       that.loading3 = true
       queryMyFriends({pageNum:this.pageNum3}).then(res=>{
-        that.loading3 = true
-        if(that.pageNum3+1<res.data.pages){
+        that.loading3 = false
+        if(that.pageNum3+1<=res.data.pages){
           that.pageNum3++
         }else{
           that.finished3 = true;

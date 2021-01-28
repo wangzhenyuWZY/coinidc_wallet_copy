@@ -5,46 +5,46 @@
             <h2>{{coinDetail.coinCode}}</h2>
             <p>{{coinDetail.coinName}}</p>
         </div>
-        <h2 class="assetstitle">基本信息</h2>
+        <h2 class="assetstitle">{{$t('mall128')}}</h2>
         <div class="coinDetail">
             <div class="detailItem">
-                <span class="fl">官网</span>
+                <span class="fl">{{$t('mall129')}}</span>
                 <div class="fr">
                     <a class="tag-read" @click="copyBack" :data-clipboard-text="coinDetail.home">{{coinDetail.home}}</a>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">白皮书</span>
+                <span class="fl">{{$t('mall130')}}</span>
                 <div class="fr">
                     <a class="tag-read" v-show="coinDetail.whitePaper" @click="copyBack" :data-clipboard-text="coinDetail.whitePaper">{{coinDetail.coinCode}} White Paper</a>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">发行量</span>
+                <span class="fl">{{$t('mall131')}}</span>
                 <div class="fr">
                     <span>{{coinDetail.totalSupply}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">流通量</span>
+                <span class="fl">{{$t('mall132')}}</span>
                 <div class="fr">
                     <span>{{coinDetail.circulatingSupply}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">持有者</span>
+                <span class="fl">{{$t('mall133')}}</span>
                 <div class="fr">
                     <span>{{coinDetail.holders}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">审计报告</span>
+                <span class="fl">{{$t('mall134')}}</span>
                 <div class="fr">
-                    <a class="tag-read" @click="copyBack" :data-clipboard-text="coinDetail.safetyReport">{{coinDetail.coinCode}} Report</a>
+                    <a class="tag-read" v-show="coinDetail.safetyReport" @click="copyBack" :data-clipboard-text="coinDetail.safetyReport">{{coinDetail.coinCode}} Report</a>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">社区</span>
+                <span class="fl">{{$t('mall135')}}</span>
                 <div class="fr">
                     <a class="tag-read" v-show="coinDetail.twitter" @click="copyBack" :data-clipboard-text="coinDetail.twitter"><img src="../../assets/tuite.png"></a>
                     <a class="tag-read" v-show="coinDetail.facebook" @click="copyBack" :data-clipboard-text="coinDetail.facebook"><img src="../../assets/facebook.png"></a>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <h2 class="assetstitle">简介</h2>
+        <h2 class="assetstitle">{{$t('mall136')}}</h2>
         <div class="coinDetail">
             <p class="coinInfo">{{coinDetail.profile}}</p>
         </div>
@@ -83,7 +83,7 @@ export default {
     copyBack(){
       var clipboard = new Clipboard('.tag-read')  
           clipboard.on('success', e => {  
-            Toast('复制成功，请使用浏览器打开');
+            Toast(this.$t('mall127'));
           clipboard.destroy()  
         })  
         clipboard.on('error', e => {   

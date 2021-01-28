@@ -9,8 +9,8 @@
         </div>
       </div>
       <div class="createOrImport">
-        <router-link :to="{path:'/wallet/step1',query: { isLogin: true }}" class="btn">创建钱包</router-link>  
-        <router-link to="/wallet/mnemonic" class="btn active">导入钱包</router-link> 
+        <router-link :to="{path:'/wallet/step1',query: { isLogin: true }}" class="btn">{{$t('mall34')}}</router-link>  
+        <router-link to="/wallet/mnemonic" class="btn active">{{$t('mall109')}}</router-link> 
       </div>  
     </div>
     <van-tabbar v-model="active" active-color="#6362F1" @change="onChange">

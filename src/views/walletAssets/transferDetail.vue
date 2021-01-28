@@ -5,40 +5,40 @@
             <h2 :class="transDetail.type==2 || transDetail.type==4?'green':'red'">{{transDetail.type==2 || transDetail.type==4?'+':'-'}}{{transDetail.amount}}</h2>
             <p>{{transDetail.timeStart}}</p>
         </div>
-        <h2 class="assetstitle">基本信息</h2>
+        <h2 class="assetstitle">{{$t('mall128')}}</h2>
         <div class="coinDetail">
             <div class="detailItem">
-                <span class="fl">转出地址</span>
+                <span class="fl">{{$t('mall142')}}</span>
                 <div class="fr">
                     <span>{{transDetail.fromAddress}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">接受账户</span>
+                <span class="fl">{{$t('mall143')}}</span>
                 <div class="fr">
                     <span>{{transDetail.toAddress}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">交易Hash</span>
+                <span class="fl">{{$t('mall144')}}</span>
                 <div class="fr">
                     <span>{{transDetail.txHash}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">区块高度</span>
+                <span class="fl">{{$t('mall145')}}</span>
                 <div class="fr">
                     <span>{{transDetail.blockIndex}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">矿工费</span>
+                <span class="fl">{{$t('mall146')}}</span>
                 <div class="fr">
-                    <span>0</span>
+                    <span>{{transDetail.gases}}TRX</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">详细数据</span>
+                <span class="fl">{{$t('mall147')}}</span>
                 <div class="fr tag-read" @click="copyBack" :data-clipboard-text="href+transDetail.txHash">
                     <span>TRONSCAN<img class="back" src="../../assets/backIco.png"></span>
                 </div>
@@ -62,7 +62,7 @@ export default {
     copyBack(){
       var clipboard = new Clipboard('.tag-read')  
           clipboard.on('success', e => {  
-            Toast('复制成功，请使用浏览器打开');
+            Toast(this.$t('mall127'));
           clipboard.destroy()  
         })  
         clipboard.on('error', e => {   
