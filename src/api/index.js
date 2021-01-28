@@ -21,6 +21,7 @@ const api = {
   queryMyTeamOwl:'/owl/queryMyTeamOwl',
   checkIdct:'/user/check',
   preImport:'/wallet/preImport',
+  getCoinInfo:'/wallet/getCoinInfo'
 }
 
 export default api

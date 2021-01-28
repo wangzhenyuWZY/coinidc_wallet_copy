@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div class="title_bg">
-      <Title :title="coin.coinCode" hide></Title>
+      <!-- <Title :title="coin.coinCode" hide></Title> -->
       <div class="assetsDtal">
         <p><img :src="coin.icon" alt=""></p>
         <p>{{coin.balance}} {{coin.coinCode}}</p>
+        <router-link class="toDetail" to="/walletAssets/assetsDetail">简介</router-link>
       </div>
     </div>
     <div class="detals_nav">
@@ -31,9 +32,9 @@
         @load="getTransation"
           class="currency__list"
       >
-        <van-cell v-for="(item,index) in transactionList" :key="index" class="item">
+        <van-cell v-for="(item,index) in transactionList" :key="index" class="item" @click="toTransDetail(item)">
             <div class="item_lt">
-              <p>{{item.txHash}}</p>
+              <p>{{item.txHashxing}}</p>
               <p>{{item.timeStart}}</p>
             </div>
             <div class="item_lt item_rg" :class="item.type==2 || item.type==4?'green':'red'">
@@ -107,11 +108,10 @@ export default {
         that.loading = false
         if(res.data.resultCode==999999){
           res.data.resultData.forEach((item,index)=>{
-            // item.txHash = that.plusXing(item.txHash,5,5)
+            item.txHashxing = that.plusXing(item.txHash,5,5)
             that.transactionList.push(item)
           })
         }
-        debugger
         if(that.pageNum<res.data.pages){
           that.pageNum++
         }else{
@@ -150,28 +150,51 @@ export default {
                   path: "/walletAssets/collection"
               });
     },
+    toTransDetail(item){
+      this.$router.push({
+                  path: "/walletAssets/transferDetail",
+                  query: {
+                      transdetail:item
+                  }
+              });
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
 .title_bg {
-  height: 180px;
-  background: url(../../assets/bg2.png) no-repeat;
-  background-size: 100% 100%;
+  height: 110px;
+  background: linear-gradient(90deg, #394CCC 0%, #2538B4 100%);
   .assetsDtal {
-    padding-top: 17px;
+    padding-top: 42px;
+    .toDetail{
+      float:right;
+      width: 60px;
+      height: 28px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.23);
+      text-align:center;
+      line-height:28px;
+      font-size:12px;
+      color:#fff;
+      margin-right:20px;
+    }
     p {
       text-align: center;
+      display: inline-block;
+      vertical-align: middle;
     }
     p:nth-child(1) {
       img {
-        width: 60px;
-        height:60px;
+        width: 26px;
+        height:26px;
       }
+      padding-left:20px;
+      padding-right:12px;
     }
     p:nth-child(2) {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 500;
       color: #ffffff;
     }
@@ -193,12 +216,12 @@ export default {
     padding: 0 36px;
     &.nav_item {
       color: #ffffff;
-      background: #6362f1;
+      background: #394CCC;
     }
   }
 }
 .wallet_scoll {
-  height: 350px;
+  height: 400px;
   overflow: scroll;
   padding: 0 10px;
   padding-top: 14px;
@@ -214,13 +237,13 @@ export default {
       margin-bottom: 10px;
       .item_lt {
         float:left;
-        width:70%;
+        width:60%;
         p {
           color: #000000;
           font-size: 12px;
           font-weight: 500;
           line-height: 16px;
-          padding-bottom: 10px;
+          padding-bottom: 1px;
         }
         p:nth-child(2) {
           color: #8997b3;
@@ -230,7 +253,7 @@ export default {
         font-size: 14px;
         font-weight: 600;
         float: right;
-        width: 20%;
+        width: 40%;
         text-align: right;
         &.red {
           color: #ff545d;

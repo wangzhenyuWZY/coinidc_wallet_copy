@@ -53,7 +53,7 @@
 
 <script>
 const TronWeb = require('tronweb');
-import {login} from '@/api/user'
+import {login,queryWalletList} from '@/api/user'
 import { getStore, setStore, objIsNull } from "@/config/utils"
 export default {
   data() {
@@ -122,6 +122,12 @@ export default {
       login(data).then((res)=>{
         if(res.data.resultCode==999999){
           setStore('token', res.data.resultData)
+          queryWalletList().then((result)=>{
+            if(result.data.resultCode==999999){
+              setStore('trxAddress',result.data.resultData.address)
+              setStore('myInviteCode', result.data.resultData.inviteCode)
+            }
+          })
         }
       })
       this.walletList.forEach((item,kdex)=>{

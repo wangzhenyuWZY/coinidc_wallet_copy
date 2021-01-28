@@ -12,7 +12,7 @@
     <van-cell-group class="mycode">
       <van-cell :title="$t('mall47')" :value="inviteCode"/>
     </van-cell-group>
-    <button class="outbtn" @click="confirmout">{{$t('mall100')}}</button>
+    <button class="outbtn" @click="confirmout">{{$t('mall126')}}</button>
     <van-tabbar v-model="activeNav" active-color="#6362F1">
       <van-tabbar-item @click="toWallet">
         <!-- <template #icon="props"> -->
@@ -76,12 +76,13 @@
   </div>
 </template>
 <script>
+const TronWeb = require('tronweb');
 import alert2 from '../mall/globelModel2'
 import {Cell,CellGroup,Dialog} from 'vant'
 import { Toast } from 'vant';
 import { getStore, objIsNull,setStore } from "@/config/utils";
 import modelKey from '../wallet/key'
-import {updateName} from '@/api/user'
+import {updateName,login} from '@/api/user'
 export default {
   data() {
     return {
@@ -114,6 +115,7 @@ export default {
         return res.isCurrent == true
       })
       this.walletItem = walletItem[0]
+      this.createTronWeb()
       if (!objIsNull(this.walletItem.mnemonic)) {
         this.hasMnemonic = true
       }
@@ -123,6 +125,20 @@ export default {
      
   },
   methods: {
+    createTronWeb(){
+      let that = this
+      let privateKey = this.walletItem.privateKey
+      const fullNode = 'https://api.trongrid.io';
+      const solidityNode = 'https://api.trongrid.io';
+      const eventServer = 'https://api.trongrid.io';
+      window.tronWeb = new TronWeb(fullNode,solidityNode,eventServer,privateKey)
+      this.walletList.forEach((item,index)=>{
+        item.address = window.tronWeb.address.fromHex(item.address)
+      })
+      if(window.tronWeb){
+        window.tronWeb.setAddress(window.tronWeb.defaultAddress.base58)
+      }
+    },
     toMall(){
       this.$router.push({
                   path: "/mall"
@@ -148,9 +164,35 @@ export default {
         title: that.$t('mall103'),
         message: that.$t('mall104')
       }).then(() => {
-        localStorage.clear()
-        window.tronWeb = null
-        that.$router.push('/walletAssets/index')
+        debugger
+        let walletList = this.walletList.filter(res=>{
+          return res.isCurrent !== true
+        })
+        if(walletList.length==0){
+          localStorage.clear()
+          that.$router.push('/walletAssets/index')
+          return
+        }
+        walletList.forEach((item,index)=>{
+          if(index==0){
+            item.isCurrent = true
+            this.walletItem = item
+          }
+        })
+        setStore('walletList',walletList)
+        let data = {
+          name:this.walletItem.walletName,
+          idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
+          inviteCode:this.walletItem.inviteCode,
+          trxAddress:window.tronWeb.address.fromHex(this.walletItem.address)
+        }
+        Toast('删除成功')
+        login(data).then((res)=>{
+          if(res.data.resultCode==999999){
+            setStore('token', res.data.resultData)
+            that.$router.push('/walletAssets/wallet')
+          }
+        })
       }).catch(() => {
         // on cancel
       });

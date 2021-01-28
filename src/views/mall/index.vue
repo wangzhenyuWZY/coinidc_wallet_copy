@@ -397,7 +397,8 @@ export default {
       trxBalance:null,
       transfer:null,
       isLoading:false,
-      isWithdrawing:false
+      isWithdrawing:false,
+      walletItem:{}
     }
   },
   created(){
@@ -410,6 +411,14 @@ export default {
             window.clearInterval(timer)
         }
     }, 500)
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+    }
     window.tronWeb = null
     if(!window.tronWeb){
       this.getTronWeb()
@@ -429,12 +438,7 @@ export default {
   methods: {
     getTronWeb(){
       let that = this
-      let walletItem = getStore("walletItem");
-      let privateKey = ''
-      if (!objIsNull(walletItem)) {
-        walletItem = JSON.parse(walletItem)
-        privateKey = walletItem.wallet.privateKey
-      }
+      let privateKey = this.walletItem.privateKey
       const fullNode = 'https://api.trongrid.io';
       const solidityNode = 'https://api.trongrid.io';
       const eventServer = 'https://api.trongrid.io';
@@ -697,6 +701,7 @@ export default {
           }else if(lang=='ko_KR'){
             that.noticeDetail.detail = res.data.resultData.content.contentKr
           }
+          that.getHomeInfo()
         }
       })
     },
@@ -767,9 +772,7 @@ export default {
         Toast('IDCT余额不足')
         return
       }
-      let namePsd = getStore('namepsd')
-      namePsd = JSON.parse(namePsd)
-      let passwordTrue = namePsd.walletPassword
+      let passwordTrue = this.walletItem.walletPassword
       if(this.password!==passwordTrue){
         Toast(this.$t('mall28'))
         return

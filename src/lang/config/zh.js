@@ -125,7 +125,7 @@ module.exports = {
   mall123:'私钥',
   mall124:'输入私钥',
   mall70:'去支付',
-  mall125:'钱包地址'
-  
+  mall125:'钱包地址',
+  mall126:'删除账户'
   
 }
