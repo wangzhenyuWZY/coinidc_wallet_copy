@@ -128,11 +128,7 @@ export default {
       })
       this.walletItem = walletItem[0]
     }
-    if(!window.tronWeb){
-      this.createTronWeb()
-    }else{
-      this.myAccount = window.tronWeb.defaultAddress.base58
-    }
+    this.createTronWeb()
     this.getMyToken()
   },
   methods: {

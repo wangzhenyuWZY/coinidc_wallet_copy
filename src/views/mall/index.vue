@@ -378,13 +378,13 @@ export default {
       mallName:'',
       loading: false,
       finished: false,
-      pageNum:0,
+      pageNum:1,
       loading1: false,
       finished1: false,
-      pageNum1:0,
+      pageNum1:1,
       loading2: false,
       finished2: false,
-      pageNum2:0,
+      pageNum2:1,
       loading3: false,
       finished3: false,
       pageNum3:1,
@@ -468,17 +468,17 @@ export default {
     },
     showIncomme(){
       this.incomeList = []
-      this.pageNum = 0
+      this.pageNum = 1
       this.getIncomeList()
     },
     showNoticeList(){
       this.noticeList = []
-      this.pageNum1 = 0
+      this.pageNum1 = 1
       this.getNoticeList()
     },
     showWithdrawList(){
       this.withdrawList = []
-      this.pageNum2 = 0
+      this.pageNum2 = 1
       this.getWithdrawList()
     },
     showMyFriends(){
@@ -660,7 +660,7 @@ export default {
           res.data.resultData.forEach((item,index)=>{
             that.incomeList.push(item)  
           })
-          if(that.pageNum+1<res.data.pages){
+          if(that.pageNum+1<=res.data.pages){
             that.pageNum++
           }else{
             that.finished = true;
@@ -675,7 +675,7 @@ export default {
       that.loading1 = true
       queryNoticeList({pageNum:this.pageNum1}).then(res=>{
         that.loading1 = false;
-        if(that.pageNum1+1<res.data.pages){
+        if(that.pageNum1+1<=res.data.pages){
           that.pageNum1++
         }else{
           that.finished1 = true;
@@ -724,7 +724,7 @@ export default {
       that.loading2 = true
       queryWithdrawList({pageNum:this.pageNum2}).then(res=>{
         that.loading2 = false
-        if(that.pageNum2+1<res.data.pages){
+        if(that.pageNum2+1<=res.data.pages){
           that.pageNum2++
         }else{
           that.finished2 = true;
