@@ -92,7 +92,7 @@ export default {
       let data = {
         name:this.name,
         idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-        inviteCode:this.inviteCode,
+        inviteCode:window.btoa(this.inviteCode),
         trxAddress:this.address
       }
       login(data).then((res)=>{

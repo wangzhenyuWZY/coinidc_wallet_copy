@@ -275,7 +275,7 @@ export default {
         let data = {
           name:walletName,
           idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-          inviteCode:this.walletItem.inviteCode,
+          inviteCode:window.btoa(this.walletItem.inviteCode),
           trxAddress:window.tronWeb.defaultAddress.base58
         }
         login(data).then((res)=>{

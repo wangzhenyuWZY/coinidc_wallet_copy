@@ -46,7 +46,7 @@
     <van-tabbar v-model="active" active-color="#4F5F7F" @change="onChange">
       <van-tabbar-item @click="withdraw">
         <!-- <template #icon="props"> -->
-        <router-link class="tabbar_ls tabbar_ls1" tag="div" to="/walletAssets/transfer">
+        <router-link class="tabbar_ls tabbar_ls1" tag="div" :to="{path:'/walletAssets/transfer',query: { coin: coin.coinCode}}">
           <template>
             <span class="tabbar_img">
               <img width="18px" src="../../assets/assets.png" />

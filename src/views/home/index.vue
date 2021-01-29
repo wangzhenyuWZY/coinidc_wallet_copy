@@ -3,14 +3,14 @@
   <div class="container">
     <h2 class="title">{{$t('mall99')}}</h2>
     <van-cell-group>
-      <van-cell :title="$t('mall72')" :value="namePsd.walletName" is-link arrow-direction @click="namepop=true" />
+      <van-cell :title="$t('mall72')" :value="walletItem.walletName" is-link arrow-direction @click="namepop=true" />
     </van-cell-group>
     <van-cell-group class="group">
       <van-cell :title="$t('mall39')" v-show="hasMnemonic" value="" is-link arrow-direction @click="showMemo(1)" />
       <van-cell :title="$t('mall38')" value="" is-link arrow-direction @click="showMemo(2)"/>
     </van-cell-group>
     <van-cell-group class="mycode">
-      <van-cell :title="$t('mall47')" :value="inviteCode"/>
+      <van-cell :title="$t('mall47')" class="tag-read" @click="copyBack" :data-clipboard-text="inviteCode" :value="inviteCode"/>
     </van-cell-group>
     <button class="outbtn" @click="confirmout">{{$t('mall126')}}</button>
     <van-tabbar v-model="activeNav" active-color="#6362F1">
@@ -83,6 +83,7 @@ import { Toast } from 'vant';
 import { getStore, objIsNull,setStore } from "@/config/utils";
 import modelKey from '../wallet/key'
 import {updateName,login} from '@/api/user'
+import Clipboard from 'clipboard';
 export default {
   data() {
     return {
@@ -183,7 +184,7 @@ export default {
         let data = {
           name:this.walletItem.walletName,
           idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-          inviteCode:this.walletItem.inviteCode,
+          inviteCode:window.btoa(this.walletItem.inviteCode),
           trxAddress:window.tronWeb.address.fromHex(this.walletItem.address)
         }
         Toast('删除成功')
@@ -224,6 +225,17 @@ export default {
           that.namepop = false
         }
       })
+    },
+    copyBack(){
+      var clipboard = new Clipboard('.tag-read')  
+          clipboard.on('success', e => {  
+            Toast(this.$t('mall33'));
+          clipboard.destroy()  
+        })  
+        clipboard.on('error', e => {   
+          // 释放内存  
+          clipboard.destroy()  
+        })
     }
   }
 }
@@ -375,5 +387,8 @@ export default {
   img {
     width: 20px;
   }
+}
+.tabbar_zise{
+  margin-top: 3px;
 }
 </style>

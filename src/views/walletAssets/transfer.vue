@@ -143,7 +143,7 @@ export default {
                 this.transferCoin = item
               }
             }else{
-              if(item.coinCode=='USDT'){
+              if(item.coinCode=='TRX'){
                 this.transferCoin = item
               }
             }

@@ -116,14 +116,7 @@ export default {
       }
       this.isCreateding = true
       createWallet(this.name,this.password,this.inviteCode).then((walletItem)=>{
-        // let data = {
-        //         walletName:this.name,
-        //         walletPassword: this.password
-        //     }
-        // setStore('namepsd', data)
-        // setStore('inviteCode',this.inviteCode)
         this.createTronWeb(walletItem)
-        
       })
     },
     userLogin(walletItem){
@@ -131,7 +124,8 @@ export default {
       let data = {
         name:this.name,
         idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-        inviteCode:this.inviteCode,
+        inviteCode:window.btoa(this.inviteCode),
+        inviterCode:window.btoa(this.inviteCode),
         trxAddress:window.tronWeb.defaultAddress.base58
       }
       login(data).then((res)=>{

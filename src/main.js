@@ -24,8 +24,9 @@ import 'lib-flexible/flexible.js'
 import './styles/index.less'
 // filters
 import './filters'
+import md5 from 'js-md5';
 Vue.config.productionTip = false
-
+Vue.prototype.$md5 = md5;
 import VueWechatTitle from 'vue-wechat-title'//动态修改title
 Vue.use(VueWechatTitle)
 

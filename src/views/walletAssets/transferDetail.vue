@@ -9,19 +9,19 @@
         <div class="coinDetail">
             <div class="detailItem">
                 <span class="fl">{{$t('mall142')}}</span>
-                <div class="fr">
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="transDetail.fromAddress">
                     <span>{{transDetail.fromAddress}}</span>
                 </div>
             </div>
             <div class="detailItem">
                 <span class="fl">{{$t('mall143')}}</span>
-                <div class="fr">
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="transDetail.toAddress">
                     <span>{{transDetail.toAddress}}</span>
                 </div>
             </div>
             <div class="detailItem">
                 <span class="fl">{{$t('mall144')}}</span>
-                <div class="fr">
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="transDetail.txHash">
                     <span>{{transDetail.txHash}}</span>
                 </div>
             </div>

@@ -27,7 +27,7 @@ const service = (url,method,data) =>{
     }
     return arr.join('&')
   }
-  let realUrl = baseApi+url
+  let realUrl = baseApi+url+'?v='+Math.random()
   let type = method.toLowerCase()
   let res = {}
   let headers = {
