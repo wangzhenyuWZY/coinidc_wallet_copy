@@ -378,16 +378,16 @@ export default {
       mallName:'',
       loading: false,
       finished: false,
-      pageNum:0,
+      pageNum:1,
       loading1: false,
       finished1: false,
-      pageNum1:0,
+      pageNum1:1,
       loading2: false,
       finished2: false,
-      pageNum2:0,
+      pageNum2:1,
       loading3: false,
       finished3: false,
-      pageNum3:0,
+      pageNum3:1,
       isAddGold:false,
       goldBalanceStart:0,
       goldBalanceEnd:0,
@@ -397,7 +397,8 @@ export default {
       trxBalance:null,
       transfer:null,
       isLoading:false,
-      isWithdrawing:false
+      isWithdrawing:false,
+      walletItem:{}
     }
   },
   created(){
@@ -410,6 +411,14 @@ export default {
             window.clearInterval(timer)
         }
     }, 500)
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      walletList = JSON.parse(walletList)
+      let walletItem = walletList.filter(res=>{
+        return res.isCurrent == true
+      })
+      this.walletItem = walletItem[0]
+    }
     window.tronWeb = null
     if(!window.tronWeb){
       this.getTronWeb()
@@ -429,12 +438,7 @@ export default {
   methods: {
     getTronWeb(){
       let that = this
-      let walletItem = getStore("walletItem");
-      let privateKey = ''
-      if (!objIsNull(walletItem)) {
-        walletItem = JSON.parse(walletItem)
-        privateKey = walletItem.wallet.privateKey
-      }
+      let privateKey = this.walletItem.privateKey
       const fullNode = 'https://api.trongrid.io';
       const solidityNode = 'https://api.trongrid.io';
       const eventServer = 'https://api.trongrid.io';
@@ -464,18 +468,22 @@ export default {
     },
     showIncomme(){
       this.incomeList = []
+      this.pageNum = 1
       this.getIncomeList()
     },
     showNoticeList(){
       this.noticeList = []
+      this.pageNum1 = 1
       this.getNoticeList()
     },
     showWithdrawList(){
       this.withdrawList = []
+      this.pageNum2 = 1
       this.getWithdrawList()
     },
     showMyFriends(){
       this.friendList = []
+      this.pageNum3 = 1
       this.getMyFriends()
     },
     getDrawCode(code){
@@ -565,7 +573,6 @@ export default {
       let that = this
       getIndexInfo().then(res=>{
         if(res.data.resultCode==999999){
-          
           that.homeInfo = res.data.resultData
           that.homeInfo = Object.assign({}, that.homeInfo)
           that.goldBalanceStart = that.homeInfo.goldBalance
@@ -581,8 +588,8 @@ export default {
       that.show4 = true
       that.loading3 = true
       queryMyFriends({pageNum:this.pageNum3}).then(res=>{
-        that.loading3 = true
-        if(that.pageNum3+1<res.data.pages){
+        that.loading3 = false
+        if(that.pageNum3+1<=res.data.pages){
           that.pageNum3++
         }else{
           that.finished3 = true;
@@ -653,7 +660,7 @@ export default {
           res.data.resultData.forEach((item,index)=>{
             that.incomeList.push(item)  
           })
-          if(that.pageNum+1<res.data.pages){
+          if(that.pageNum+1<=res.data.pages){
             that.pageNum++
           }else{
             that.finished = true;
@@ -668,7 +675,7 @@ export default {
       that.loading1 = true
       queryNoticeList({pageNum:this.pageNum1}).then(res=>{
         that.loading1 = false;
-        if(that.pageNum1+1<res.data.pages){
+        if(that.pageNum1+1<=res.data.pages){
           that.pageNum1++
         }else{
           that.finished1 = true;
@@ -697,6 +704,7 @@ export default {
           }else if(lang=='ko_KR'){
             that.noticeDetail.detail = res.data.resultData.content.contentKr
           }
+          that.getHomeInfo()
         }
       })
     },
@@ -716,7 +724,7 @@ export default {
       that.loading2 = true
       queryWithdrawList({pageNum:this.pageNum2}).then(res=>{
         that.loading2 = false
-        if(that.pageNum2+1<res.data.pages){
+        if(that.pageNum2+1<=res.data.pages){
           that.pageNum2++
         }else{
           that.finished2 = true;
@@ -767,9 +775,7 @@ export default {
         Toast('IDCT余额不足')
         return
       }
-      let namePsd = getStore('namepsd')
-      namePsd = JSON.parse(namePsd)
-      let passwordTrue = namePsd.walletPassword
+      let passwordTrue = this.walletItem.walletPassword
       if(this.password!==passwordTrue){
         Toast(this.$t('mall28'))
         return

@@ -73,7 +73,7 @@ export default {
         return res.isCurrent == true
       })
       this.walletItem = walletItem[0]
-      let mnemonic = this.walletItem.mnemonic.split(" ");
+      let mnemonic = this.walletItem.mnemonic
       if (!objIsNull(mnemonic)) {
         this.mnemonic = mnemonic.split(" ");
         console.log(this.mnemonic)
@@ -109,10 +109,6 @@ export default {
         alert('顺序有误')
         return
       }
-      let wallet = this.$route.query;
-      let walletList = JSON.parse(getStore("walletList"));
-      let walletItem = JSON.parse(getStore("walletItem"));
-      this.$set(walletItem, "details", wallet);
       this.$router.push('/wallet/step2')
       // this.$router.replace({ name: "wallet" });
     },

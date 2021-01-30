@@ -25,6 +25,7 @@ const service = (url,method,data) =>{
       str = i + '=' + json[i]
       arr.push(str)
     }
+    arr.push('v='+Math.random())
     return arr.join('&')
   }
   let realUrl = baseApi+url

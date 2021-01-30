@@ -32,7 +32,7 @@
         <van-pull-refresh v-model="isLoading" @refresh="getMyToken">
           <div class="item" v-for="(item,index) in coinList" :key="index" @click="toDetail(item)">
             <div class="item_top">
-              <img :src="item.icon" alt="">
+              <img :src="item.img" alt="">
               <div class="item_assets">
                 <p>
                   <span>{{item.coinCode}}</span>

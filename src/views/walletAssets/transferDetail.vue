@@ -1,51 +1,78 @@
 <template>
     <div class="assetsContainer">
         <div class="coinHead">
-            <img src="">
-            <h2>IDCT</h2>
-            <p>CoinIDC Token</p>
+            <img src="../../assets/sucIco.png">
+            <h2 :class="transDetail.type==2 || transDetail.type==4?'green':'red'">{{transDetail.type==2 || transDetail.type==4?'+':'-'}}{{transDetail.amount}}</h2>
+            <p>{{transDetail.timeStart}}</p>
         </div>
-        <h2 class="assetstitle">基本信息</h2>
+        <h2 class="assetstitle">{{$t('mall128')}}</h2>
         <div class="coinDetail">
             <div class="detailItem">
-                <span class="fl">转出地址</span>
-                <div class="fr">
-                    <span>Tji2j32jije9fjf92j2933j392j3j2</span>
+                <span class="fl">{{$t('mall142')}}</span>
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="transDetail.fromAddress">
+                    <span>{{transDetail.fromAddress}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">接受账户</span>
-                <div class="fr">
-                    <span>Tji2j32jije9fjf92j2933j392j3j2</span>
+                <span class="fl">{{$t('mall143')}}</span>
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="transDetail.toAddress">
+                    <span>{{transDetail.toAddress}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">交易Hash</span>
-                <div class="fr">
-                    <span>Tji2j32jije9fjf92j2933j392j3j2</span>
+                <span class="fl">{{$t('mall144')}}</span>
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="transDetail.txHash">
+                    <span>{{transDetail.txHash}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">区块高度</span>
+                <span class="fl">{{$t('mall145')}}</span>
                 <div class="fr">
-                    <span>2922</span>
+                    <span>{{transDetail.blockIndex}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">矿工费</span>
+                <span class="fl">{{$t('mall146')}}</span>
                 <div class="fr">
-                    <span>1.33 TRX</span>
+                    <span>{{transDetail.gases}}TRX</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">详细数据</span>
-                <div class="fr">
+                <span class="fl">{{$t('mall147')}}</span>
+                <div class="fr tag-read" @click="copyBack" :data-clipboard-text="href+transDetail.txHash">
                     <span>TRONSCAN<img class="back" src="../../assets/backIco.png"></span>
                 </div>
             </div>
         </div>
     </div>
 </template>
+<script>
+import Clipboard from 'clipboard'; 
+import { Toast } from 'vant';
+export default {
+  data() {
+    return {
+      transDetail:this.$route.query.transdetail,
+      href:'https://tronscan.io/#/transaction/'
+    }
+  },
+  created(){
+  },
+  methods: {
+    copyBack(){
+      var clipboard = new Clipboard('.tag-read')  
+          clipboard.on('success', e => {  
+            Toast(this.$t('mall127'));
+          clipboard.destroy()  
+        })  
+        clipboard.on('error', e => {   
+          // 释放内存  
+          clipboard.destroy()  
+        })
+    }
+  }
+}
+</script>
 <style lang='less' scoped>
 .assetsContainer{
     position: absolute;
@@ -69,6 +96,9 @@
             font-weight: 600;
             padding-bottom:7px;
             padding-top:10px;
+            &.red{
+                color: #ff545d;
+            }
         }
         p{
             font-size:12px;
@@ -103,6 +133,7 @@
             }
             .fr{
                 float:right;
+                width:60%;
                 a{
                     font-size:14px;
                     color:#1C63FF;
@@ -118,7 +149,8 @@
                     font-size:14px;
                     color:#000000;
                     line-height:20px;
-                    text-align:right;
+                    word-break: break-word;
+                    float: right;
                     .back{
                         width:22px;
                         height:22px;

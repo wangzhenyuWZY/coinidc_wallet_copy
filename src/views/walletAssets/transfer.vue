@@ -128,11 +128,7 @@ export default {
       })
       this.walletItem = walletItem[0]
     }
-    if(!window.tronWeb){
-      this.createTronWeb()
-    }else{
-      this.myAccount = window.tronWeb.defaultAddress.base58
-    }
+    this.createTronWeb()
     this.getMyToken()
   },
   methods: {
@@ -147,7 +143,7 @@ export default {
                 this.transferCoin = item
               }
             }else{
-              if(item.coinCode=='USDT'){
+              if(item.coinCode=='TRX'){
                 this.transferCoin = item
               }
             }

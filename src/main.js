@@ -24,13 +24,15 @@ import 'lib-flexible/flexible.js'
 import './styles/index.less'
 // filters
 import './filters'
+import md5 from 'js-md5';
 Vue.config.productionTip = false
-
+Vue.prototype.$md5 = md5;
 import VueWechatTitle from 'vue-wechat-title'//动态修改title
 Vue.use(VueWechatTitle)
 
 router.beforeEach((to, from ,next) => {
   beforeCheck()
+  bindOldStore()
   if(to.path === '/walletAssets/index'){
     let token = getStore("token");
     if (!token) {
@@ -43,14 +45,45 @@ router.beforeEach((to, from ,next) => {
   }
   return
 })
-
+function bindOldStore(){
+  let walletItem = getStore('walletItem')
+  if(!objIsNull(walletItem)){
+    walletItem = JSON.parse(walletItem)
+    let namepsd = JSON.parse(getStore('namepsd'))
+    let mnemonic = getStore('mnemonic')
+    let oldWalletItem = {
+      address:walletItem.wallet.address,
+      privateKey:walletItem.wallet.privateKey,
+      walletName:namepsd.walletName,
+      walletPassword:namepsd.walletPassword,
+      mnemonic:mnemonic,
+      isCurrent:true
+    }
+    let walletList = getStore('walletList')
+    let isHaswallet = false
+    if(!objIsNull(walletList)){
+      walletList = JSON.parse(walletList)
+      walletList.forEach(element => {
+        element.isCurrent = false
+        if(element.privateKey==walletItem.wallet.privateKey){
+          isHaswallet = true
+        }
+      })
+    }else{
+      walletList = []
+    }
+    if(!isHaswallet){
+      walletList.push(oldWalletItem)
+      setStore('walletList',walletList)
+    }
+  }
+}
 function getUrlKey(name,url){
   　return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(url) || [, ""])[1].replace(/\+/g, '%20')) || null
 }
 function beforeCheck(){
     var lang = getStore('lang')
     var hreflang = getUrlKey('lang',window.location.href)
-    // debugger
     if(!lang){
       if(hreflang){
         setStore('lang',hreflang)
@@ -66,10 +99,6 @@ function beforeCheck(){
     if(idctUserId){
       setStore('idctUserId',idctUserId)
     }
-    
-    // alert(idctUserId)
-    // alert(lang)
-    // alert('链接上的参数lang'+hreflang)
 }
 
 new Vue({

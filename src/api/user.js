@@ -20,6 +20,15 @@ export function preImport(data) {
   )
 }
 
+// 币种简介
+export function getCoinInfo(data) {
+  return request(
+    api.getCoinInfo,
+    'get',
+    data
+  )
+}
+
 // 查询猫头鹰
 export function queryMyOwlList(data) {
   return request(

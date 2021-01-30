@@ -14,7 +14,16 @@
         <Input :showEye="false" :label="$t('mall45')" :placeholder="$t('mall46')" v-model="passwordAgain" />
       </div>
       <div class="set_input" v-show="hasUserid">
-        <Input :label="$t('mall47')" :icon='false' :placeholder="$t('mall48')" v-model="inviteCode" />
+        <div class="globle_inputs">
+          <div class="input_lable">{{$t('mall47')}}</div>
+          <div class="globle_input">
+            <div class="input_lt">
+              <input :placeholder="$t('mall48')" v-model="inviteCode">
+            </div>
+          </div>
+        </div>
+        <!-- <input v-model="inviteCode" style="border:1px solid #000;width:100%;height:40px;">
+        <Input :label="$t('mall47')" :icon='false' :placeholder="$t('mall48')" v-model="inviteCode" /> -->
       </div>
       <div class="btn">
         <!-- <van-button class="globel_button" :loading="false" :disabled='disableds' type="info" loading-text="下载Keystore文件">下载Keystore文件</van-button> -->
@@ -116,14 +125,7 @@ export default {
       }
       this.isCreateding = true
       createWallet(this.name,this.password,this.inviteCode).then((walletItem)=>{
-        // let data = {
-        //         walletName:this.name,
-        //         walletPassword: this.password
-        //     }
-        // setStore('namepsd', data)
-        // setStore('inviteCode',this.inviteCode)
         this.createTronWeb(walletItem)
-        
       })
     },
     userLogin(walletItem){
@@ -169,4 +171,39 @@ export default {
 
 <style lang="less" scoped>
 @import './index.less';
+.globle_inputs {
+  .input_lable {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  .globle_input {
+    display: flex;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    border: 1px solid #cad5de;
+    padding-right: 15px;
+    .input_lt {
+      flex: 1;
+      padding-left: 12px;
+      overflow: hidden;
+      display: flex;
+      input {
+        flex: 1;
+        height: 50px;
+        font-size: 14px;
+
+        &::placeholder {
+          color: #b6c6d3;
+          font-size: 14px;
+        }
+      }
+    }
+    .rg_icon {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
 </style>

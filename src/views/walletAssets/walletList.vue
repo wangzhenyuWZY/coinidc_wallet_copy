@@ -8,11 +8,11 @@
           <i class="radioico"></i>
         </div>
       </div>
-      <div class="createOrImport">
-        <router-link :to="{path:'/wallet/step1',query: { isLogin: true }}" class="btn">创建钱包</router-link>  
-        <router-link to="/wallet/mnemonic" class="btn active">导入钱包</router-link> 
-      </div>  
     </div>
+    <div class="createOrImport">
+      <router-link :to="{path:'/wallet/step1',query: { isLogin: true }}" class="btn">{{$t('mall34')}}</router-link>  
+      <router-link to="/wallet/mnemonic" class="btn active">{{$t('mall109')}}</router-link> 
+    </div> 
     <van-tabbar v-model="active" active-color="#6362F1" @change="onChange">
       <van-tabbar-item @click="toWallet">
         <!-- <template #icon="props"> -->
@@ -53,8 +53,9 @@
 
 <script>
 const TronWeb = require('tronweb');
-import {login} from '@/api/user'
+import {login,queryWalletList} from '@/api/user'
 import { getStore, setStore, objIsNull } from "@/config/utils"
+import { Toast } from 'vant';
 export default {
   data() {
     return {
@@ -122,6 +123,15 @@ export default {
       login(data).then((res)=>{
         if(res.data.resultCode==999999){
           setStore('token', res.data.resultData)
+          queryWalletList().then((result)=>{
+            if(result.data.resultCode==999999){
+              setStore('trxAddress',result.data.resultData.address)
+              setStore('myInviteCode', result.data.resultData.inviteCode)
+            }
+          })
+          that.$router.push('/walletAssets/wallet')
+        }else{
+          Toast(res.data.resultDesc)
         }
       })
       this.walletList.forEach((item,kdex)=>{
@@ -137,12 +147,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.walletList{
-  height:calc(100vh - 100px);
-  .createOrImport{
-    background:rgba(0, 0, 0, 0.08);
+ .createOrImport{
+    background:#F7F8FA;
     padding:15px 10px;
     text-align:center;
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index:9;
     .btn{
       width:155px;
       height:46px;
@@ -165,8 +178,11 @@ export default {
       }
     }
   }
+.walletList{
+  height:calc(100vh - 120px);
+  background: #F7F8FA;
   .walletItemUl{
-    height:calc(100vh - 150px);
+    height:calc(100vh - 200px);
     overflow-y: scroll;
     padding:10px;
     background:#F7F8FA;

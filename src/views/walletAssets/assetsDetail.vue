@@ -1,62 +1,99 @@
 <template>
     <div class="assetsContainer">
         <div class="coinHead">
-            <img src="">
-            <h2>IDCT</h2>
-            <p>CoinIDC Token</p>
+            <img :src="coinDetail.icon">
+            <h2>{{coinDetail.coinCode}}</h2>
+            <p>{{coinDetail.coinName}}</p>
         </div>
-        <h2 class="assetstitle">基本信息</h2>
+        <h2 class="assetstitle">{{$t('mall128')}}</h2>
         <div class="coinDetail">
             <div class="detailItem">
-                <span class="fl">官网</span>
+                <span class="fl">{{$t('mall129')}}</span>
                 <div class="fr">
-                    <a>https://www.coinidc.com</a>
+                    <a class="tag-read" @click="copyBack" :data-clipboard-text="coinDetail.home">{{coinDetail.home}}</a>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">白皮书</span>
+                <span class="fl">{{$t('mall130')}}</span>
                 <div class="fr">
-                    <a>IDCT白皮书</a>
+                    <a class="tag-read" v-show="coinDetail.whitePaper" @click="copyBack" :data-clipboard-text="coinDetail.whitePaper">{{coinDetail.coinCode}} White Paper</a>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">发行量</span>
+                <span class="fl">{{$t('mall131')}}</span>
                 <div class="fr">
-                    <span>74234795</span>
+                    <span>{{coinDetail.totalSupply}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">流通量</span>
+                <span class="fl">{{$t('mall132')}}</span>
                 <div class="fr">
-                    <span>2922</span>
+                    <span>{{coinDetail.circulatingSupply}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">持有者</span>
+                <span class="fl">{{$t('mall133')}}</span>
                 <div class="fr">
-                    <span>21221278786</span>
+                    <span>{{coinDetail.holders}}</span>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">审计报告</span>
+                <span class="fl">{{$t('mall134')}}</span>
                 <div class="fr">
-                    <a>IDCT 审计报告</a>
+                    <a class="tag-read" v-show="coinDetail.safetyReport" @click="copyBack" :data-clipboard-text="coinDetail.safetyReport">{{coinDetail.coinCode}} Report</a>
                 </div>
             </div>
             <div class="detailItem">
-                <span class="fl">社区</span>
+                <span class="fl">{{$t('mall135')}}</span>
                 <div class="fr">
-                    <a><img src="../../assets/tuite.png"></a>
-                    <a><img src="../../assets/facebook.png"></a>
+                    <a class="tag-read" v-show="coinDetail.twitter" @click="copyBack" :data-clipboard-text="coinDetail.twitter"><img src="../../assets/tuite.png"></a>
+                    <a class="tag-read" v-show="coinDetail.facebook" @click="copyBack" :data-clipboard-text="coinDetail.facebook"><img src="../../assets/facebook.png"></a>
+                    <a class="tag-read" v-show="coinDetail.github" @click="copyBack" :data-clipboard-text="coinDetail.github"><img src="../../assets/github.png"></a>
+                    <a class="tag-read" v-show="coinDetail.telegram" @click="copyBack" :data-clipboard-text="coinDetail.telegram"><img src="../../assets/telegram.png"></a>
                 </div>
             </div>
         </div>
-        <h2 class="assetstitle">简介</h2>
+        <h2 class="assetstitle">{{$t('mall136')}}</h2>
         <div class="coinDetail">
-            <p class="coinInfo">      波场TRON以推动互联网去中心化为己任，致力于为去中心化互联网搭建基础设施。旗下的TRON协议是全球最大的基于区块链的去中心化应用操作系统协 议之一，为协议上的去中心化应用运行提供高吞吐，高扩展，高可靠性的底层公链支持。波场TRON还通过创新的可插拔智能合约平台为以太坊智能合约提供更好的兼容性。</p>
+            <p class="coinInfo">{{coinDetail.profile}}</p>
         </div>
     </div>
 </template>
+<script>
+import Clipboard from 'clipboard'; 
+import { Toast } from 'vant';
+import {getCoinInfo} from '@/api/user'
+import { getStore} from "@/config/utils";
+export default {
+  data() {
+    return {
+      coinDetail:{}
+    }
+  },
+  created(){
+    let that = this  
+    let coin = JSON.parse(getStore('coin'))  
+    getCoinInfo({coinCode:coin.coinCode}).then(res=>{
+        if(res.data.resultCode==999999){
+            that.coinDetail = res.data.resultData
+        }
+    })
+  },
+  methods: {
+    copyBack(){
+      var clipboard = new Clipboard('.tag-read')  
+          clipboard.on('success', e => {  
+            Toast(this.$t('mall127'));
+          clipboard.destroy()  
+        })  
+        clipboard.on('error', e => {   
+          // 释放内存  
+          clipboard.destroy()  
+        })
+    }
+  }
+}
+</script>
 <style lang='less' scoped>
 .assetsContainer{
     position: absolute;
