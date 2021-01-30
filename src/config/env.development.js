@@ -2,6 +2,6 @@
 module.exports = {
   title: 'vue-h5-template',
   baseUrl: 'http://localhost:9018', // 项目地址
-  baseApi: 'https://dappapi.coinidc.com', // 本地api请求地址,注意：如果你使用了代理，请设置成'/'
+  baseApi: 'http://owlapi.apitest.date', // 本地api请求地址,注意：如果你使用了代理，请设置成'/'
   $cdn: 'https://imgs.solui.cn'
 }
