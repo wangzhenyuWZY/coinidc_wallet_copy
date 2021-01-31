@@ -51,7 +51,7 @@ const service = (url,method,data) =>{
   } else if(type === 'put') {
     res = axios.put(realUrl,qs.stringify(data))
     .catch(function (error) {
-     
+
     })
   }
   return res
@@ -67,7 +67,7 @@ const service = (url,method,data) =>{
 //         forbidClick: true
 //       })
 //     }
-//     config.headers['Content-Type'] = 'application/x-www-form-urlencoded' 
+//     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 //     if (store.getters.token) {
 //       config.headers['X-Token'] = ''
 //     }

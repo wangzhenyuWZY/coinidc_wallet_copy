@@ -17,11 +17,10 @@
           <div class="input_lable">{{$t('mall47')}}</div>
           <div class="globle_input">
             <div class="input_lt">
-              <input :placeholder="$t('mall47')" v-model="inviteCode">
+              <input :placeholder="$t('mall48')" v-model="inviteCode">
             </div>
           </div>
         </div>
-        <!-- <Input :label="$t('mall47')" :icon='false' :placeholder="$t('mall48')" v-model="inviteCode" /> -->
       </div>
       <div class="btn">
         <van-button class="globel_button" :loading="isConfirm" :disabled='isConfirm' type="info"  @click="handelClick">{{$t('mall109')}}
@@ -49,7 +48,7 @@ export default {
       inviteCode:'',
       name:'',
       walletDetail:{},
-      hasUser:true
+      hasUser:false
     }
   },
   components: {
@@ -57,7 +56,7 @@ export default {
     Input
   },
   computed: {
-    
+
   },
   mounted() {
 
@@ -90,16 +89,30 @@ export default {
           that.name = res.data.resultData
           that.address = this.address
         }else if(res.data.resultCode==100005){
-          that.hasUser  = false
+            let userId = getStore('idctUserId');
+            let walletList = getStore("walletList");
+            if (!objIsNull(walletList)) {
+              this.hasUser = false;
+            }else {
+              if(userId){
+                that.hasUser  = true
+              }else{
+                that.hasUser  = false;
+              }
+            }
         }
       })
     },
     handelClick() {
       let that = this
       let walletList = getStore('walletList')
+      let wallet = []
+      if (!objIsNull(walletList)) {
+        wallet = JSON.parse(walletList)
+      }
       let data = {
         name:this.name,
-        idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
+        idctUserId:wallet.length>0?'':(getStore('idctUserId')?getStore('idctUserId'):''),
         inviteCode:this.inviteCode,
         trxAddress:this.address
       }

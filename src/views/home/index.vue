@@ -122,8 +122,8 @@ export default {
       }
     }
   },
-  mounted() { 
-     
+  mounted() {
+
   },
   methods: {
     createTronWeb(){
@@ -183,7 +183,7 @@ export default {
         setStore('walletList',walletList)
         let data = {
           name:this.walletItem.walletName,
-          idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
+          idctUserId:thiswalletList.length>0?'':(getStore('idctUserId')?getStore('idctUserId'):''),
           inviteCode:this.walletItem.inviteCode,
           trxAddress:window.tronWeb.address.fromHex(this.walletItem.address)
         }
@@ -227,14 +227,14 @@ export default {
       })
     },
     copyBack(){
-      var clipboard = new Clipboard('.tag-read')  
-          clipboard.on('success', e => {  
+      var clipboard = new Clipboard('.tag-read')
+          clipboard.on('success', e => {
             Toast(this.$t('mall33'));
-          clipboard.destroy()  
-        })  
-        clipboard.on('error', e => {   
-          // 释放内存  
-          clipboard.destroy()  
+          clipboard.destroy()
+        })
+        clipboard.on('error', e => {
+          // 释放内存
+          clipboard.destroy()
         })
     }
   }
@@ -281,8 +281,8 @@ export default {
     box-shadow: 2px 2px 2px 0px #bfc2d8;
     border-radius: 5px;
     padding: 38px 12px 33px 10px;
-    
-    
+
+
     .imgs {
       text-align: center;
       img {
@@ -367,7 +367,7 @@ export default {
           color: #b6c6d3;
         }
       }
-    }    
+    }
 .van-cell__title{
   color:#000000;
 }
