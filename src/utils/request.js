@@ -25,9 +25,10 @@ const service = (url,method,data) =>{
       str = i + '=' + json[i]
       arr.push(str)
     }
+    arr.push('v='+Math.random())
     return arr.join('&')
   }
-  let realUrl = baseApi+url+'?v='+Math.random()
+  let realUrl = baseApi+url
   let type = method.toLowerCase()
   let res = {}
   let headers = {
@@ -50,7 +51,7 @@ const service = (url,method,data) =>{
   } else if(type === 'put') {
     res = axios.put(realUrl,qs.stringify(data))
     .catch(function (error) {
-     
+
     })
   }
   return res
@@ -66,7 +67,7 @@ const service = (url,method,data) =>{
 //         forbidClick: true
 //       })
 //     }
-//     config.headers['Content-Type'] = 'application/x-www-form-urlencoded' 
+//     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 //     if (store.getters.token) {
 //       config.headers['X-Token'] = ''
 //     }

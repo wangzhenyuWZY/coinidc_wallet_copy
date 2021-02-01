@@ -65,6 +65,12 @@ function bindOldStore(){
       walletList = JSON.parse(walletList)
       walletList.forEach(element => {
         element.isCurrent = false
+        if(element.wallet){
+          element.address = element.wallet.address
+          element.privateKey = element.wallet.privateKey
+          // element.walletName = element.wallet.walletName
+          // element.walletPassword = element.wallet.walletPassword
+        }
         if(element.privateKey==walletItem.wallet.privateKey){
           isHaswallet = true
         }

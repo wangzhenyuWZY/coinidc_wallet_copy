@@ -112,7 +112,7 @@ export default {
         decimals:6,
         balance:0,
         price:0,
-        img:'../../assets/trx.png'
+        img:require('@/assets/trx.png')
       },{
         name:'IDC',
         decimals:6,
@@ -125,7 +125,8 @@ export default {
         balance:0,
         price:0,
         img:require('@/assets/usdt.png')
-      }]
+      }],
+      walletList:[]
     }
   },
   components: {
@@ -136,6 +137,7 @@ export default {
     let walletList = getStore("walletList");
     if (!objIsNull(walletList)) {
       walletList = JSON.parse(walletList)
+      this.walletList = walletList
       let walletItem = walletList.filter(res=>{
         return res.isCurrent == true
       })
@@ -155,14 +157,14 @@ export default {
       alert('loadimages的回调')
     },
     toDetail(item){
-      setStore('coin',item) 
+      setStore('coin',item)
       this.$router.push({
                   path: "/walletAssets/details",
                   query: {
                       coin:item
                   }
               });
-             
+
     },
     withdraw(item){
       this.$router.push({
@@ -213,7 +215,7 @@ export default {
         }
       }
       // this.tronWeb.trx.getBalance(this.tronWeb.defaultAddress.base58).then(res => {
-      //   that.coinList[0].balance = that.tronWeb.fromSun(res)   
+      //   that.coinList[0].balance = that.tronWeb.fromSun(res)
       // })
       // this.getIdcBalance()
       // this.getUsdtBalance()
@@ -274,8 +276,8 @@ export default {
       let walletName = this.walletItem.walletName
         let data = {
           name:walletName,
-          idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-          inviteCode:window.btoa(this.walletItem.inviteCode),
+          idctUserId:this.walletList.length>0?'':(getStore('idctUserId')?getStore('idctUserId'):''),
+          inviteCode:this.walletItem.inviteCode,
           trxAddress:window.tronWeb.defaultAddress.base58
         }
         login(data).then((res)=>{

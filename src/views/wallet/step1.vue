@@ -14,7 +14,15 @@
         <Input :showEye="false" :label="$t('mall45')" :placeholder="$t('mall46')" v-model="passwordAgain" />
       </div>
       <div class="set_input" v-show="hasUserid">
-        <Input :label="$t('mall47')" :icon='false' :placeholder="$t('mall48')" v-model="inviteCode" />
+        <div class="globle_inputs">
+            <div class="input_lable">{{$t('mall47')}}</div>
+            <div class="globle_input">
+              <div class="input_lt">
+                <input :placeholder="$t('mall48')" v-model="inviteCode">
+              </div>
+            </div>
+          </div>
+
       </div>
       <div class="btn">
         <!-- <van-button class="globel_button" :loading="false" :disabled='disableds' type="info" loading-text="下载Keystore文件">下载Keystore文件</van-button> -->
@@ -44,7 +52,8 @@ export default {
       inviteCode:'',
       hasUserid:false,
       address:'',
-      isCreateding:false
+      isCreateding:false,
+      walletList:[]
     }
   },
   components: {
@@ -61,24 +70,34 @@ export default {
     }
   },
   mounted() {
-    removeStore("mnemonic");
-    removeStore("walletItem");
-    let userId = getStore('idctUserId')
-    if(userId){
-      this.hasUserid = false
+    // removeStore("mnemonic");
+    // removeStore("walletItem");
+    let userId = getStore('idctUserId');
+    let walletList = getStore("walletList");
+    if (!objIsNull(walletList)) {
+      this.hasUserid = true;
     }else{
-      this.hasUserid = true
+      if(userId){
+        this.hasUserid = false
+      }else{
+        this.hasUserid = true
+      }
     }
   },
   created(){
+    let walletList = getStore("walletList");
     if(!this.$route.query.isLogin){
-      let walletList = getStore("walletList");
       if (!objIsNull(walletList)) {
         walletList = JSON.parse(walletList)
         walletList = walletList.filter(res=>{
           return res.isCurrent == false
         })
+        this.walletList = walletList
         setStore('walletList', JSON.stringify(walletList));
+      }
+    }else{
+      if (!objIsNull(walletList)) {
+        this.walletList = JSON.parse(walletList)
       }
     }
   },
@@ -123,9 +142,8 @@ export default {
       let that = this
       let data = {
         name:this.name,
-        idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-        inviteCode:window.btoa(this.inviteCode),
-        inviterCode:window.btoa(this.inviteCode),
+        idctUserId:this.walletList.length>0?'':(getStore('idctUserId')?getStore('idctUserId'):''),
+        inviteCode:this.inviteCode,
         trxAddress:window.tronWeb.defaultAddress.base58
       }
       login(data).then((res)=>{
@@ -163,4 +181,39 @@ export default {
 
 <style lang="less" scoped>
 @import './index.less';
+.globle_inputs {
+  .input_lable {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  .globle_input {
+    display: flex;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    border: 1px solid #cad5de;
+    padding-right: 15px;
+    .input_lt {
+      flex: 1;
+      padding-left: 12px;
+      overflow: hidden;
+      display: flex;
+      input {
+        flex: 1;
+        height: 50px;
+        font-size: 14px;
+
+        &::placeholder {
+          color: #b6c6d3;
+          font-size: 14px;
+        }
+      }
+    }
+    .rg_icon {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
 </style>

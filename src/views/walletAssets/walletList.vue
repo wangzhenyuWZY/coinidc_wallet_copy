@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="createOrImport">
-      <router-link :to="{path:'/wallet/step1',query: { isLogin: true }}" class="btn">{{$t('mall34')}}</router-link>  
-      <router-link to="/wallet/mnemonic" class="btn active">{{$t('mall109')}}</router-link> 
-    </div> 
+      <router-link :to="{path:'/wallet/step1',query: { isLogin: true }}" class="btn">{{$t('mall34')}}</router-link>
+      <router-link to="/wallet/mnemonic" class="btn active">{{$t('mall109')}}</router-link>
+    </div>
     <van-tabbar v-model="active" active-color="#6362F1" @change="onChange">
       <van-tabbar-item @click="toWallet">
         <!-- <template #icon="props"> -->
@@ -76,7 +76,7 @@ export default {
     this.createTronWeb()
   },
   mounted(){
-    
+
   },
   methods: {
     createTronWeb(){
@@ -116,8 +116,8 @@ export default {
       let walletName = item.walletName
       let data = {
         name:walletName,
-        idctUserId:getStore('idctUserId')?getStore('idctUserId'):'',
-        inviteCode:window.btoa(item.inviteCode),
+        idctUserId:'',
+        inviteCode:'',
         trxAddress:window.tronWeb.address.fromHex(item.address)
       }
       login(data).then((res)=>{
@@ -152,7 +152,7 @@ export default {
     padding:15px 10px;
     text-align:center;
     position: fixed;
-    bottom: 50px;
+    bottom: calc(2rem);
     width: 100%;
     box-sizing: border-box;
     z-index:9;
@@ -230,7 +230,7 @@ export default {
   height: 236px;
   background: url(../../assets/bg2.png) no-repeat;
   background-size: 100% 100%;
-  
+
   .assetsDtal {
     padding-top: 33px;
     p {
@@ -330,7 +330,7 @@ font-family: PingFangSC-Regular, PingFang SC;
             &:nth-child(2) {
               margin-top: 2px;
             }
-            
+
             span {
               &:nth-child(1) {
                 font-size: 12px;
